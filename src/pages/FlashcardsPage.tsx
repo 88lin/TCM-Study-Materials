@@ -2,10 +2,13 @@ import { useMemo, useState } from 'react';
 import {
   Check,
   ChevronDown,
-  Layers3,
+  Gamepad2,
+  Heart,
   RotateCcw,
   Search,
   Sparkles,
+  Star,
+  Trophy,
   X
 } from 'lucide-react';
 import { Flashcard } from '../components/Flashcard';
@@ -28,9 +31,9 @@ const chapterOptions: Array<{ id: ChapterFilter; label: string }> = [
 
 const statusOptions: Array<{ id: StatusFilter; label: string }> = [
   { id: 'all', label: '全部' },
-  { id: 'fresh', label: '未标记' },
-  { id: 'unmastered', label: '未掌握' },
-  { id: 'mastered', label: '已掌握' }
+  { id: 'fresh', label: '新关卡' },
+  { id: 'unmastered', label: '再挑战' },
+  { id: 'mastered', label: '已通关' }
 ];
 
 export function FlashcardsPage() {
@@ -62,6 +65,14 @@ export function FlashcardsPage() {
 
   const totalMastered = cards.filter((card) => mastery[card.id] === 'mastered').length;
   const totalUnmastered = cards.filter((card) => mastery[card.id] === 'unmastered').length;
+  const totalProgress = Math.round((totalMastered / cards.length) * 100);
+  const level = Math.max(1, Math.floor(totalMastered / 8) + 1);
+  const levelStart = Math.floor(totalMastered / 8) * 8;
+  const nextLevelAt = Math.min(cards.length, levelStart + 8);
+  const levelSpan = Math.max(nextLevelAt - levelStart, 1);
+  const levelProgress = totalMastered >= cards.length ? 100 : Math.round(((totalMastered - levelStart) / levelSpan) * 100);
+  const cardsToNextLevel = Math.max(nextLevelAt - totalMastered, 0);
+  const nextLevelGoal = totalMastered >= cards.length ? '全图通关' : `距 Lv.${level + 1} 还差 ${cardsToNextLevel} 张`;
 
   function setCardMastery(id: number, status: MasteryStatus) {
     setMastery((current) => ({ ...current, [id]: status }));
@@ -81,10 +92,10 @@ export function FlashcardsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-sky-50 text-slate-950">
-      <div className="sticky top-0 z-40 border-b border-sky-200/80 bg-sky-50/95 backdrop-blur">
-        <div className="h-1.5 bg-sky-100">
-          <div className="h-full bg-[linear-gradient(90deg,#2563eb,#14b8a6,#7c3aed)] transition-all duration-300" style={{ width: `${progress}%` }} />
+    <main className="flashcards-game min-h-screen text-slate-800">
+      <div className="sticky top-0 z-40 border-b border-teal-100/90 bg-[#fffaf3]/90 backdrop-blur">
+        <div className="h-1.5 bg-[#ffe8dc]">
+          <div className="h-full bg-[linear-gradient(90deg,#6ee7c8,#ffd0b5,#f9a8d4)] transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
 
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3">
@@ -94,16 +105,16 @@ export function FlashcardsPage() {
             </a>
 
             <div className="flex min-w-0 items-center gap-2">
-              <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-indigo-600 text-white">
-                <Layers3 size={19} aria-hidden="true" />
+              <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#ffb7a0] text-white shadow-sm">
+                <Gamepad2 size={19} aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <h1 className="truncate text-base font-semibold tracking-normal">中医药学概论速记卡片</h1>
-                <p className="text-xs text-slate-500">{cards.length} 张卡片 · {totalMastered} 已掌握 · {totalUnmastered} 待巩固</p>
+                <h1 className="truncate text-base font-semibold tracking-normal">中医卡片闯关</h1>
+                <p className="text-xs text-slate-500">Lv.{level} · {totalMastered} 张通关 · {totalUnmastered} 张待挑战</p>
               </div>
             </div>
 
-            <div className="flex min-w-[220px] flex-1 items-center gap-2 rounded-lg border border-sky-200 bg-white px-3 py-2 shadow-sm focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/15">
+            <div className="flex min-w-[220px] flex-1 items-center gap-2 rounded-lg border border-teal-100 bg-white px-3 py-2 shadow-sm focus-within:border-teal-300 focus-within:ring-2 focus-within:ring-teal-200/60">
               <Search size={17} className="shrink-0 text-slate-500" aria-hidden="true" />
               <input
                 className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-slate-400"
@@ -148,19 +159,51 @@ export function FlashcardsPage() {
       </div>
 
       <section className="mx-auto max-w-7xl px-4 py-5">
+        <div className="game-hud mb-4">
+          <div className="game-stat">
+            <Trophy size={18} aria-hidden="true" />
+            <span className="game-label">等级</span>
+            <span className="game-value">Lv.{level}</span>
+          </div>
+          <div className="game-stat">
+            <Star size={18} aria-hidden="true" />
+            <span className="game-label">总进度</span>
+            <span className="game-value">{totalProgress}%</span>
+          </div>
+          <div className="game-stat">
+            <Heart size={18} aria-hidden="true" />
+            <span className="game-label">已通关</span>
+            <span className="game-value">{totalMastered}</span>
+          </div>
+          <div className="game-meter" aria-label={`总进度 ${totalProgress}%`}>
+            <div style={{ width: `${totalProgress}%` }} />
+          </div>
+        </div>
+
+        <div className="game-quest mb-4">
+          <div className="flex min-w-0 items-center gap-2">
+            <Sparkles size={17} className="text-[#ff9f84]" aria-hidden="true" />
+            <span className="font-semibold text-[#2f8f7c]">下一等级</span>
+          </div>
+          <div className="game-quest-meter" aria-label={`等级进度 ${levelProgress}%`}>
+            <div style={{ width: `${levelProgress}%` }} />
+          </div>
+          <span className="text-sm font-semibold text-[#a85640]">{nextLevelGoal}</span>
+        </div>
+
         <div className="mb-4 grid gap-3 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-              <span className="rounded-md bg-white px-2.5 py-1 shadow-sm ring-1 ring-sky-100">{filteredCards.length} 张匹配</span>
-              <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-emerald-700 ring-1 ring-emerald-200">{masteredCount} 已掌握</span>
-              <span className="rounded-md bg-fuchsia-50 px-2.5 py-1 text-fuchsia-700 ring-1 ring-fuchsia-200">{unmasteredCount} 未掌握</span>
-              <span className="rounded-md bg-rose-50 px-2.5 py-1 text-rose-700 ring-1 ring-rose-200">{progress}%</span>
+              <span className="rounded-md bg-white px-2.5 py-1 shadow-sm ring-1 ring-teal-100">{filteredCards.length} 张本关</span>
+              <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-emerald-700 ring-1 ring-emerald-200">{masteredCount} 通关</span>
+              <span className="rounded-md bg-[#fff0e8] px-2.5 py-1 text-[#c46a52] ring-1 ring-[#ffd6c7]">{unmasteredCount} 待挑战</span>
+              <span className="rounded-md bg-pink-50 px-2.5 py-1 text-pink-600 ring-1 ring-pink-100">{progress}%</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 text-sm text-slate-500">
-            <Sparkles size={16} className="text-indigo-600" aria-hidden="true" />
-            <span>{chapter === 'all' ? '全章节' : chapterNames[chapter]}</span>
+            <Sparkles size={16} className="text-[#f59f85]" aria-hidden="true" />
+            <span>{chapter === 'all' ? '全地图' : chapterNames[chapter]}</span>
           </div>
         </div>
 
@@ -177,7 +220,7 @@ export function FlashcardsPage() {
             ))}
           </div>
         ) : (
-          <div className="grid min-h-[320px] place-items-center rounded-lg border border-dashed border-sky-200 bg-white text-center">
+          <div className="grid min-h-[320px] place-items-center rounded-lg border border-dashed border-[#ffd6c7] bg-white text-center">
             <div>
               <p className="font-medium text-slate-800">没有匹配的卡片</p>
               <p className="mt-1 text-sm text-slate-500">调整搜索词或筛选条件</p>

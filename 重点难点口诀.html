@@ -10,7 +10,7 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        tcm: { accent: '#0891B2', red: '#C41E3A', blue: '#2563EB', cream: '#F0F9FF', dark: '#3730A3', green: '#5B8C5A' }
+        tcm: { accent: '#FF9F84', red: '#C41E3A', blue: '#4FBFA8', cream: '#FFF9F2', dark: '#2F8F7C', green: '#5FCFB5' }
       }
     }
   }
@@ -21,8 +21,8 @@ tailwind.config = {
 @media print { .sticky-nav { position: static !important; } .collapsible-content { display: block !important; } .toggle-btn { display: none !important; } section { break-inside: avoid; } .no-print { display: none !important; } }
 .collapsible-content { display: none; }
 .collapsible-content.open { display: block; }
-.mnemonic-box { background: linear-gradient(135deg, #0891B2 0%, #C41E3A 50%, #2563EB 100%); color: #F0F9FF; font-size: 1.25rem; line-height: 1.8; padding: 1.25rem 1.5rem; border-radius: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
-.exam-tip { border-left: 4px solid #C41E3A; background: #FFF1F0; padding: 0.75rem 1rem; border-radius: 0.5rem; }
+.mnemonic-box { background: linear-gradient(135deg, #fff0e8 0%, #e8fbf4 100%); color: #2F8F7C; font-size: 1.25rem; line-height: 1.8; padding: 1.25rem 1.5rem; border: 1px solid #ffd6c7; border-radius: 1rem; box-shadow: 0 12px 26px rgba(255,159,132,.12); }
+.exam-tip { border-left: 4px solid #FF9F84; background: #FFF1F0; padding: 0.75rem 1rem; border-radius: 0.5rem; }
 </style>
 </head>
 <body class="bg-tcm-cream text-tcm-dark font-sans leading-relaxed">
@@ -33,39 +33,39 @@ function toggleSection(id) {
 }
 </script>
 
-<nav class="sticky-nav sticky top-0 z-50 bg-tcm-dark shadow-lg no-print">
+<nav class="sticky-nav sticky top-0 z-50 bg-white/90 shadow-sm border-b border-teal-100 no-print">
   <div class="max-w-4xl mx-auto px-4 py-2 flex items-center justify-between flex-wrap gap-1">
     <h1 class="text-tcm-accent font-bold text-lg tracking-wider">重点难点口诀速记</h1>
     <div class="flex gap-1 flex-wrap text-xs">
-      <a href="#m01" class="px-2 py-1 bg-tcm-red text-white rounded hover:bg-red-700">01</a>
-      <a href="#m02" class="px-2 py-1 bg-tcm-blue text-tcm-cream rounded hover:bg-blue-700">02</a>
-      <a href="#m03" class="px-2 py-1 bg-tcm-green text-white rounded hover:bg-green-700">03</a>
-      <a href="#m04" class="px-2 py-1 bg-blue-700 text-white rounded hover:bg-blue-800">04</a>
-      <a href="#m05" class="px-2 py-1 bg-purple-700 text-white rounded hover:bg-purple-800">05</a>
-      <a href="#m06" class="px-2 py-1 bg-teal-700 text-white rounded hover:bg-teal-800">06</a>
-      <a href="#m07" class="px-2 py-1 bg-indigo-700 text-white rounded hover:bg-indigo-800">07</a>
-      <a href="#m08" class="px-2 py-1 bg-pink-700 text-white rounded hover:bg-pink-800">08</a>
-      <a href="#m09" class="px-2 py-1 bg-cyan-700 text-white rounded hover:bg-cyan-800">09</a>
-      <a href="#m10" class="px-2 py-1 bg-cyan-700 text-white rounded hover:bg-cyan-800">10</a>
-      <a href="#m11" class="px-2 py-1 bg-sky-700 text-white rounded hover:bg-sky-800">11</a>
-      <a href="#m12" class="px-2 py-1 bg-emerald-700 text-white rounded hover:bg-emerald-800">12</a>
-      <a href="#m13" class="px-2 py-1 bg-rose-700 text-white rounded hover:bg-rose-800">13</a>
-      <a href="#summary" class="px-2 py-1 bg-tcm-accent text-tcm-dark rounded hover:bg-cyan-500 font-bold">速查</a>
+      <a href="#m01" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">01</a>
+      <a href="#m02" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">02</a>
+      <a href="#m03" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">03</a>
+      <a href="#m04" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">04</a>
+      <a href="#m05" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">05</a>
+      <a href="#m06" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">06</a>
+      <a href="#m07" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">07</a>
+      <a href="#m08" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">08</a>
+      <a href="#m09" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">09</a>
+      <a href="#m10" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">10</a>
+      <a href="#m11" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">11</a>
+      <a href="#m12" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">12</a>
+      <a href="#m13" class="px-2 py-1 bg-white text-tcm-dark border border-teal-100 rounded hover:bg-[#fff0e8]">13</a>
+      <a href="#summary" class="px-2 py-1 bg-[#fff0e8] text-tcm-dark border border-[#ffd6c7] rounded hover:bg-[#ffe8dc] font-bold">速查</a>
     </div>
   </div>
 </nav>
 
-<header class="bg-gradient-to-br from-tcm-dark via-tcm-blue to-tcm-red text-white text-center py-10 px-4">
+<header class="bg-gradient-to-br from-[#fff7ef] via-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-center py-10 px-4">
   <h1 class="text-3xl md:text-4xl font-bold tracking-widest mb-2">中医药学概论</h1>
-  <p class="text-lg text-tcm-cream opacity-90">重点难点口诀速记手册 &mdash; 13模块全覆盖</p>
+  <p class="text-lg text-tcm-dark/70">重点难点口诀速记手册 &mdash; 13模块全覆盖</p>
   <span class="inline-block bg-tcm-accent text-tcm-dark rounded-full px-4 py-1 font-bold text-sm mt-3">零基础 &middot; 口诀版 &middot; 可折叠 &middot; A4打印</span>
 </header>
 
 <main class="max-w-4xl mx-auto px-4 py-8 space-y-8">
 
 <section id="m01" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m01-content')" class="toggle-btn w-full bg-gradient-to-r from-tcm-red to-tcm-blue text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
-    <div><span class="font-bold text-xl">模块01</span><span class="ml-2 text-lg">五脏功能对应表</span><span class="ml-2 text-xs bg-cyan-400 text-tcm-dark text-white rounded px-2 py-0.5">最易混</span></div>
+  <button onclick="toggleSection('m01-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+    <div><span class="font-bold text-xl">模块01</span><span class="ml-2 text-lg">五脏功能对应表</span><span class="ml-2 text-xs bg-[#fff0e8] text-tcm-dark rounded px-2 py-0.5">最易混</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
   <div id="m01-content" class="collapsible-content px-6 py-5 space-y-4">
@@ -83,18 +83,18 @@ function toggleSection(id) {
     <div class="bg-gradient-to-r from-red-100 via-sky-100 to-green-100 rounded-lg p-4 border border-tcm-accent">
       <p class="font-bold text-tcm-blue mb-2">颜色联想记忆法</p>
       <p class="flex items-center gap-3 text-lg">
-        <span class="bg-red-600 text-white rounded-full px-3 py-1">红心(火)</span>
+        <span class="bg-[#ffe8dc] text-tcm-dark rounded-full px-3 py-1">红心(火)</span>
         <span class="bg-white text-tcm-dark border-2 border-gray-400 rounded-full px-3 py-1">白肺(金)</span>
         <span class="bg-sky-500 text-tcm-dark rounded-full px-3 py-1">黄脾(土)</span>
-        <span class="bg-green-600 text-white rounded-full px-3 py-1">绿肝(木)</span>
-        <span class="bg-gray-800 text-white rounded-full px-3 py-1">黑肾(水)</span>
+        <span class="bg-[#e8fbf4] text-tcm-dark rounded-full px-3 py-1">绿肝(木)</span>
+        <span class="bg-[#f3f4f6] text-tcm-dark rounded-full px-3 py-1">黑肾(水)</span>
       </p>
     </div>
 
     <h3 class="font-bold text-tcm-red text-lg border-b border-tcm-accent pb-1">5脏 x 7项 完整对应表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-tcm-dark to-tcm-blue text-white"><th class="border border-tcm-blue px-2 py-2">五脏</th><th class="border border-tcm-blue px-2 py-2">五行/颜色</th><th class="border border-tcm-blue px-2 py-2">主要功能</th><th class="border border-tcm-blue px-2 py-2">在体/窍</th><th class="border border-tcm-blue px-2 py-2">情志/液</th><th class="border border-tcm-blue px-2 py-2">季节</th><th class="border border-tcm-blue px-2 py-2">别称</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">五脏</th><th class="border border-tcm-blue px-2 py-2">五行/颜色</th><th class="border border-tcm-blue px-2 py-2">主要功能</th><th class="border border-tcm-blue px-2 py-2">在体/窍</th><th class="border border-tcm-blue px-2 py-2">情志/液</th><th class="border border-tcm-blue px-2 py-2">季节</th><th class="border border-tcm-blue px-2 py-2">别称</th></tr></thead>
         <tbody>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-2 py-2"><b class="text-tcm-red">心</b></td><td class="border border-tcm-blue px-2 py-2">火/红</td><td class="border border-tcm-blue px-2 py-2">主血脉、主神志</td><td class="border border-tcm-blue px-2 py-2">面、舌</td><td class="border border-tcm-blue px-2 py-2">喜、汗</td><td class="border border-tcm-blue px-2 py-2">夏</td><td class="border border-tcm-blue px-2 py-2"><b>君主之官</b></td></tr>
           <tr class="bg-blue-50"><td class="border border-tcm-blue px-2 py-2"><b class="text-blue-700">肺</b></td><td class="border border-tcm-blue px-2 py-2">金/白</td><td class="border border-tcm-blue px-2 py-2">主气、司呼吸、主宣降、通调水道、朝百脉、主治节</td><td class="border border-tcm-blue px-2 py-2">皮、鼻</td><td class="border border-tcm-blue px-2 py-2">忧、涕</td><td class="border border-tcm-blue px-2 py-2">秋</td><td class="border border-tcm-blue px-2 py-2"><b>华盖之官</b></td></tr>
@@ -110,7 +110,7 @@ function toggleSection(id) {
 
 
 <section id="m02" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m02-content')" class="toggle-btn w-full bg-gradient-to-r from-tcm-blue to-tcm-accent text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m02-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块02</span><span class="ml-2 text-lg">五脏别称+概括</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -130,7 +130,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-tcm-blue text-lg border-b border-tcm-accent pb-1">五脏别称对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-tcm-blue to-tcm-accent text-white"><th class="border border-tcm-blue px-2 py-2">五脏</th><th class="border border-tcm-blue px-2 py-2">别称</th><th class="border border-tcm-blue px-2 py-2">别称含义</th><th class="border border-tcm-blue px-2 py-2">核心概括</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">五脏</th><th class="border border-tcm-blue px-2 py-2">别称</th><th class="border border-tcm-blue px-2 py-2">别称含义</th><th class="border border-tcm-blue px-2 py-2">核心概括</th></tr></thead>
         <tbody>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-2 py-2"><b class="text-tcm-red">心</b></td><td class="border border-tcm-blue px-2 py-2">君主之官</td><td class="border border-tcm-blue px-2 py-2">心为五脏六腑之大主</td><td class="border border-tcm-blue px-2 py-2"><b>主血脉、主神志</b></td></tr>
           <tr class="bg-blue-50"><td class="border border-tcm-blue px-2 py-2"><b class="text-blue-700">肺</b></td><td class="border border-tcm-blue px-2 py-2">华盖之官</td><td class="border border-tcm-blue px-2 py-2">肺位最高，覆盖诸脏如伞盖</td><td class="border border-tcm-blue px-2 py-2"><b>主气司呼吸、主治节</b></td></tr>
@@ -146,7 +146,7 @@ function toggleSection(id) {
 
 
 <section id="m03" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m03-content')" class="toggle-btn w-full bg-gradient-to-r from-tcm-green to-green-800 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m03-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块03</span><span class="ml-2 text-lg">五行生克+配属+特性</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -172,7 +172,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-tcm-green text-lg border-b border-tcm-accent pb-1">五行全属性对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-tcm-green to-green-800 text-white"><th class="border border-tcm-blue px-2 py-2">五行</th><th class="border border-tcm-blue px-2 py-2">特性</th><th class="border border-tcm-blue px-2 py-2">脏</th><th class="border border-tcm-blue px-2 py-2">腑</th><th class="border border-tcm-blue px-2 py-2">季节</th><th class="border border-tcm-blue px-2 py-2">颜色</th><th class="border border-tcm-blue px-2 py-2">情志</th><th class="border border-tcm-blue px-2 py-2">生我(母)</th><th class="border border-tcm-blue px-2 py-2">我生(子)</th><th class="border border-tcm-blue px-2 py-2">克我</th><th class="border border-tcm-blue px-2 py-2">我克</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">五行</th><th class="border border-tcm-blue px-2 py-2">特性</th><th class="border border-tcm-blue px-2 py-2">脏</th><th class="border border-tcm-blue px-2 py-2">腑</th><th class="border border-tcm-blue px-2 py-2">季节</th><th class="border border-tcm-blue px-2 py-2">颜色</th><th class="border border-tcm-blue px-2 py-2">情志</th><th class="border border-tcm-blue px-2 py-2">生我(母)</th><th class="border border-tcm-blue px-2 py-2">我生(子)</th><th class="border border-tcm-blue px-2 py-2">克我</th><th class="border border-tcm-blue px-2 py-2">我克</th></tr></thead>
         <tbody>
           <tr class="bg-green-50"><td class="border border-tcm-blue px-2 py-2"><b>木</b></td><td class="border border-tcm-blue px-2 py-2">生长升发条达舒畅</td><td class="border border-tcm-blue px-2 py-2">肝</td><td class="border border-tcm-blue px-2 py-2">胆</td><td class="border border-tcm-blue px-2 py-2">春</td><td class="border border-tcm-blue px-2 py-2">青</td><td class="border border-tcm-blue px-2 py-2">怒</td><td class="border border-tcm-blue px-2 py-2">水</td><td class="border border-tcm-blue px-2 py-2">火</td><td class="border border-tcm-blue px-2 py-2">金</td><td class="border border-tcm-blue px-2 py-2">土</td></tr>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-2 py-2"><b>火</b></td><td class="border border-tcm-blue px-2 py-2">温热升腾</td><td class="border border-tcm-blue px-2 py-2">心</td><td class="border border-tcm-blue px-2 py-2">小肠</td><td class="border border-tcm-blue px-2 py-2">夏</td><td class="border border-tcm-blue px-2 py-2">红</td><td class="border border-tcm-blue px-2 py-2">喜</td><td class="border border-tcm-blue px-2 py-2">木</td><td class="border border-tcm-blue px-2 py-2">土</td><td class="border border-tcm-blue px-2 py-2">水</td><td class="border border-tcm-blue px-2 py-2">金</td></tr>
@@ -188,7 +188,7 @@ function toggleSection(id) {
 
 
 <section id="m04" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m04-content')" class="toggle-btn w-full bg-gradient-to-r from-blue-700 to-blue-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m04-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块04</span><span class="ml-2 text-lg">气的分类+功能+失常</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -208,7 +208,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-blue-700 text-lg border-b border-tcm-accent pb-1">4气对比表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-blue-700 to-blue-900 text-white"><th class="border border-tcm-blue px-2 py-2">气名</th><th class="border border-tcm-blue px-2 py-2">生成来源</th><th class="border border-tcm-blue px-2 py-2">分布部位</th><th class="border border-tcm-blue px-2 py-2">主要功能</th><th class="border border-tcm-blue px-2 py-2">特点</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">气名</th><th class="border border-tcm-blue px-2 py-2">生成来源</th><th class="border border-tcm-blue px-2 py-2">分布部位</th><th class="border border-tcm-blue px-2 py-2">主要功能</th><th class="border border-tcm-blue px-2 py-2">特点</th></tr></thead>
         <tbody>
           <tr class="bg-blue-50"><td class="border border-tcm-blue px-2 py-2"><b>元气</b></td><td class="border border-tcm-blue px-2 py-2">根于肾，禀于先天</td><td class="border border-tcm-blue px-2 py-2">分布于全身</td><td class="border border-tcm-blue px-2 py-2">原动力，推动生长发育</td><td class="border border-tcm-blue px-2 py-2">最基本最重要的气</td></tr>
           <tr class="bg-blue-100"><td class="border border-tcm-blue px-2 py-2"><b>宗气</b></td><td class="border border-tcm-blue px-2 py-2">肺吸入清气+脾运化水谷精气</td><td class="border border-tcm-blue px-2 py-2">聚于胸中(气海)</td><td class="border border-tcm-blue px-2 py-2">走呼吸道司呼吸、贯心脉行气血</td><td class="border border-tcm-blue px-2 py-2">后天之气</td></tr>
@@ -223,7 +223,7 @@ function toggleSection(id) {
 
 
 <section id="m05" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m05-content')" class="toggle-btn w-full bg-gradient-to-r from-purple-700 to-purple-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m05-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块05</span><span class="ml-2 text-lg">气血精津液关系网</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -245,7 +245,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-purple-700 text-lg border-b border-tcm-accent pb-1">关系网络图式对比表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-purple-700 to-purple-900 text-white"><th class="border border-tcm-blue px-2 py-2">关系组</th><th class="border border-tcm-blue px-2 py-2">气的作用</th><th class="border border-tcm-blue px-2 py-2">对方的作用</th><th class="border border-tcm-blue px-2 py-2">核心口诀</th><th class="border border-tcm-blue px-2 py-2">病理意义</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">关系组</th><th class="border border-tcm-blue px-2 py-2">气的作用</th><th class="border border-tcm-blue px-2 py-2">对方的作用</th><th class="border border-tcm-blue px-2 py-2">核心口诀</th><th class="border border-tcm-blue px-2 py-2">病理意义</th></tr></thead>
         <tbody>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-2 py-2"><b>气-血</b></td><td class="border border-tcm-blue px-2 py-2">气能生血、行血、摄血(帅)</td><td class="border border-tcm-blue px-2 py-2">血能载气、养气(母)</td><td class="border border-tcm-blue px-2 py-2"><b>气为血帅，血为气母</b></td><td class="border border-tcm-blue px-2 py-2">气虚→血虚/出血；血虚→气亦虚</td></tr>
           <tr class="bg-blue-50"><td class="border border-tcm-blue px-2 py-2"><b>气-津液</b></td><td class="border border-tcm-blue px-2 py-2">气能生津、行津、摄津</td><td class="border border-tcm-blue px-2 py-2">津能载气、保气运行</td><td class="border border-tcm-blue px-2 py-2"><b>气生行摄津，津载气</b></td><td class="border border-tcm-blue px-2 py-2">气虚→津亏/水肿；津脱→气亦脱</td></tr>
@@ -261,8 +261,8 @@ function toggleSection(id) {
 
 
 <section id="m06" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m06-content')" class="toggle-btn w-full bg-gradient-to-r from-teal-700 to-teal-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
-    <div><span class="font-bold text-xl">模块06</span><span class="ml-2 text-lg">脏腑10组关系</span><span class="ml-2 text-xs bg-tcm-red text-white rounded px-2 py-0.5">论述重点</span></div>
+  <button onclick="toggleSection('m06-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+    <div><span class="font-bold text-xl">模块06</span><span class="ml-2 text-lg">脏腑10组关系</span><span class="ml-2 text-xs bg-[#fff0e8] text-tcm-dark rounded px-2 py-0.5">论述重点</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
   <div id="m06-content" class="collapsible-content px-6 py-5 space-y-4">
@@ -277,16 +277,16 @@ function toggleSection(id) {
 
     <div class="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-lg p-4 border-2 border-teal-600">
       <p class="font-bold text-teal-700 mb-2">论述题答题技巧 -- 四步法</p>
-      <p class="text-sm"><span class="bg-teal-700 text-white rounded px-2 py-0.5 font-bold">1</span> 先说关系(如"心肺关系主要体现在气血关系")</p>
-      <p class="text-sm"><span class="bg-teal-700 text-white rounded px-2 py-0.5 font-bold">2</span> 再说生理配合(具体机制描述)</p>
-      <p class="text-sm"><span class="bg-teal-700 text-white rounded px-2 py-0.5 font-bold">3</span> 再说病理影响(一方失常如何影响另一方)</p>
-      <p class="text-sm"><span class="bg-teal-700 text-white rounded px-2 py-0.5 font-bold">4</span> 最后总结(概括该关系的重要性)</p>
+      <p class="text-sm"><span class="bg-[#e8fbf4] text-tcm-dark rounded px-2 py-0.5 font-bold">1</span> 先说关系(如"心肺关系主要体现在气血关系")</p>
+      <p class="text-sm"><span class="bg-[#e8fbf4] text-tcm-dark rounded px-2 py-0.5 font-bold">2</span> 再说生理配合(具体机制描述)</p>
+      <p class="text-sm"><span class="bg-[#e8fbf4] text-tcm-dark rounded px-2 py-0.5 font-bold">3</span> 再说病理影响(一方失常如何影响另一方)</p>
+      <p class="text-sm"><span class="bg-[#e8fbf4] text-tcm-dark rounded px-2 py-0.5 font-bold">4</span> 最后总结(概括该关系的重要性)</p>
     </div>
 
     <h3 class="font-bold text-teal-700 text-lg border-b border-tcm-accent pb-1">10组脏腑关系详细对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-teal-700 to-teal-900 text-white"><th class="border border-tcm-blue px-2 py-2">序号</th><th class="border border-tcm-blue px-2 py-2">关系组</th><th class="border border-tcm-blue px-2 py-2">口诀关键词</th><th class="border border-tcm-blue px-2 py-2">生理配合</th><th class="border border-tcm-blue px-2 py-2">病理影响</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">序号</th><th class="border border-tcm-blue px-2 py-2">关系组</th><th class="border border-tcm-blue px-2 py-2">口诀关键词</th><th class="border border-tcm-blue px-2 py-2">生理配合</th><th class="border border-tcm-blue px-2 py-2">病理影响</th></tr></thead>
         <tbody>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-2 py-2">1</td><td class="border border-tcm-blue px-2 py-2"><b>心-肺</b></td><td class="border border-tcm-blue px-2 py-2">气血</td><td class="border border-tcm-blue px-2 py-2">心主血，肺主气；气血相互依存</td><td class="border border-tcm-blue px-2 py-2">肺气虚→心血运行不畅</td></tr>
           <tr class="bg-sky-50"><td class="border border-tcm-blue px-2 py-2">2</td><td class="border border-tcm-blue px-2 py-2"><b>心-脾</b></td><td class="border border-tcm-blue px-2 py-2">血</td><td class="border border-tcm-blue px-2 py-2">脾为血液生化之源，心主血脉；共主血生成运行</td><td class="border border-tcm-blue px-2 py-2">脾虚→心血不足(心脾两虚)</td></tr>
@@ -307,7 +307,7 @@ function toggleSection(id) {
 
 
 <section id="m07" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m07-content')" class="toggle-btn w-full bg-gradient-to-r from-indigo-700 to-indigo-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m07-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块07</span><span class="ml-2 text-lg">六腑+奇恒之腑+胆</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -327,7 +327,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-indigo-700 text-lg border-b border-tcm-accent pb-1">六腑功能对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-indigo-700 to-indigo-900 text-white"><th class="border border-tcm-blue px-2 py-2">腑名</th><th class="border border-tcm-blue px-2 py-2">主要功能</th><th class="border border-tcm-blue px-2 py-2">功能详解</th><th class="border border-tcm-blue px-2 py-2">特殊归属</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">腑名</th><th class="border border-tcm-blue px-2 py-2">主要功能</th><th class="border border-tcm-blue px-2 py-2">功能详解</th><th class="border border-tcm-blue px-2 py-2">特殊归属</th></tr></thead>
         <tbody>
           <tr class="bg-indigo-50"><td class="border border-tcm-blue px-2 py-2"><b>胆</b></td><td class="border border-tcm-blue px-2 py-2">贮存排泄胆汁、主决断</td><td class="border border-tcm-blue px-2 py-2">胆汁来源于肝，胆贮藏排泄；主决断与精神情志相关</td><td class="border border-tcm-blue px-2 py-2"><b class="text-indigo-700">双重归属：六腑+奇恒之腑</b></td></tr>
           <tr class="bg-sky-50"><td class="border border-tcm-blue px-2 py-2"><b>胃</b></td><td class="border border-tcm-blue px-2 py-2">受纳腐熟、通降</td><td class="border border-tcm-blue px-2 py-2">接受水谷初步消化(腐熟)；以通降为顺</td><td class="border border-tcm-blue px-2 py-2">六腑之一</td></tr>
@@ -344,7 +344,7 @@ function toggleSection(id) {
 
 
 <section id="m08" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m08-content')" class="toggle-btn w-full bg-gradient-to-r from-pink-700 to-pink-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m08-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块08</span><span class="ml-2 text-lg">经络系统+奇经八脉</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -368,7 +368,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-pink-700 text-lg border-b border-tcm-accent pb-1">走向规律表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-pink-700 to-pink-900 text-white"><th class="border border-tcm-blue px-2 py-2">经脉类别</th><th class="border border-tcm-blue px-2 py-2">走向</th><th class="border border-tcm-blue px-2 py-2">具体经脉</th><th class="border border-tcm-blue px-2 py-2">交接规律</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">经脉类别</th><th class="border border-tcm-blue px-2 py-2">走向</th><th class="border border-tcm-blue px-2 py-2">具体经脉</th><th class="border border-tcm-blue px-2 py-2">交接规律</th></tr></thead>
         <tbody>
           <tr class="bg-pink-50"><td class="border border-tcm-blue px-2 py-2"><b>手三阴</b></td><td class="border border-tcm-blue px-2 py-2">胸→手</td><td class="border border-tcm-blue px-2 py-2">手太阴肺经、手厥阴心包经、手少阴心经</td><td class="border border-tcm-blue px-2 py-2">在手指末端与手三阳交接</td></tr>
           <tr class="bg-blue-50"><td class="border border-tcm-blue px-2 py-2"><b>手三阳</b></td><td class="border border-tcm-blue px-2 py-2">手→头</td><td class="border border-tcm-blue px-2 py-2">手阳明大肠经、手少阳三焦经、手太阳小肠经</td><td class="border border-tcm-blue px-2 py-2">在头面部与足三阳交接</td></tr>
@@ -383,7 +383,7 @@ function toggleSection(id) {
 
 
 <section id="m09" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m09-content')" class="toggle-btn w-full bg-gradient-to-r from-cyan-700 to-cyan-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m09-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块09</span><span class="ml-2 text-lg">六淫对比+疫疠+七情</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -411,7 +411,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">六淫邪气对比大表(6邪x5特点)</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-cyan-700 to-cyan-900 text-white"><th class="border border-tcm-blue px-2 py-2">邪气</th><th class="border border-tcm-blue px-2 py-2">性质</th><th class="border border-tcm-blue px-2 py-2">致病特点</th><th class="border border-tcm-blue px-2 py-2">易伤部位</th><th class="border border-tcm-blue px-2 py-2">季节性</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">邪气</th><th class="border border-tcm-blue px-2 py-2">性质</th><th class="border border-tcm-blue px-2 py-2">致病特点</th><th class="border border-tcm-blue px-2 py-2">易伤部位</th><th class="border border-tcm-blue px-2 py-2">季节性</th></tr></thead>
         <tbody>
           <tr class="bg-gray-50"><td class="border border-tcm-blue px-2 py-2"><b>风邪</b></td><td class="border border-tcm-blue px-2 py-2">开泄、善行数变</td><td class="border border-tcm-blue px-2 py-2">百病之长、易袭阳位、游走不定</td><td class="border border-tcm-blue px-2 py-2">上部、肌表</td><td class="border border-tcm-blue px-2 py-2">春季为主，四季皆有</td></tr>
           <tr class="bg-blue-50"><td class="border border-tcm-blue px-2 py-2"><b>寒邪</b></td><td class="border border-tcm-blue px-2 py-2">凝滞、收引</td><td class="border border-tcm-blue px-2 py-2">伤阳、凝滞气血、收引筋脉</td><td class="border border-tcm-blue px-2 py-2">阳气、筋脉</td><td class="border border-tcm-blue px-2 py-2">冬季为主</td></tr>
@@ -428,8 +428,8 @@ function toggleSection(id) {
 
 
 <section id="m10" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m10-content')" class="toggle-btn w-full bg-gradient-to-r from-cyan-700 to-cyan-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
-    <div><span class="font-bold text-xl">模块10</span><span class="ml-2 text-lg">诊法全套</span><span class="ml-2 text-xs bg-cyan-700 text-white rounded px-2 py-0.5">内容最多</span></div>
+  <button onclick="toggleSection('m10-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+    <div><span class="font-bold text-xl">模块10</span><span class="ml-2 text-lg">诊法全套</span><span class="ml-2 text-xs bg-[#e8fbf4] text-tcm-dark rounded px-2 py-0.5">内容最多</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
   <div id="m10-content" class="collapsible-content px-6 py-5 space-y-4">
@@ -454,7 +454,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">望神4种对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-cyan-700 to-cyan-900 text-white"><th class="border border-tcm-blue px-2 py-2">神候</th><th class="border border-tcm-blue px-2 py-2">含义</th><th class="border border-tcm-blue px-2 py-2">临床表现</th><th class="border border-tcm-blue px-2 py-2">病情判断</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">神候</th><th class="border border-tcm-blue px-2 py-2">含义</th><th class="border border-tcm-blue px-2 py-2">临床表现</th><th class="border border-tcm-blue px-2 py-2">病情判断</th></tr></thead>
         <tbody>
           <tr class="bg-green-50"><td class="border border-tcm-blue px-2 py-2"><b>得神</b></td><td class="border border-tcm-blue px-2 py-2">正气充足</td><td class="border border-tcm-blue px-2 py-2">目光有神、面色荣润、精神充沛</td><td class="border border-tcm-blue px-2 py-2">健康或病轻，预后好</td></tr>
           <tr class="bg-sky-50"><td class="border border-tcm-blue px-2 py-2"><b>少神</b></td><td class="border border-tcm-blue px-2 py-2">正气已伤</td><td class="border border-tcm-blue px-2 py-2">目光乏神、面色少华、精神不振</td><td class="border border-tcm-blue px-2 py-2">病较重</td></tr>
@@ -466,7 +466,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">面色5色主病对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-cyan-700 to-blue-800 text-white"><th class="border border-tcm-blue px-2 py-2">面色</th><th class="border border-tcm-blue px-2 py-2">主病</th><th class="border border-tcm-blue px-2 py-2">口诀关键词</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">面色</th><th class="border border-tcm-blue px-2 py-2">主病</th><th class="border border-tcm-blue px-2 py-2">口诀关键词</th></tr></thead>
         <tbody>
           <tr class="bg-green-50"><td class="border border-tcm-blue px-2 py-2"><b>青色</b></td><td class="border border-tcm-blue px-2 py-2">寒证、痛证、瘀证、惊风</td><td class="border border-tcm-blue px-2 py-2">寒痛瘀惊风</td></tr>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-2 py-2"><b>赤色</b></td><td class="border border-tcm-blue px-2 py-2">热证(实热/虚热)</td><td class="border border-tcm-blue px-2 py-2">赤热</td></tr>
@@ -482,7 +482,7 @@ function toggleSection(id) {
       <p class="text-sm"><b>正常舌象：</b>淡红舌、薄白苔</p>
       <p class="text-sm"><b>观察7项：</b>舌质、舌色、舌形、舌态、舌苔、苔色、苔质</p>
     </div>
-    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-300">
+    <div class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] rounded-lg p-4 border border-blue-300">
       <p class="font-bold text-blue-700 mb-2">闻诊要点</p>
       <p class="text-sm"><b>声音：</b>声高亢→实热；声低微→虚寒</p>
       <p class="text-sm"><b>气味：</b>臭秽→热；无臭→寒</p>
@@ -495,7 +495,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">问寒热4型+问汗3种</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-cyan-600 to-blue-700 text-white"><th class="border border-tcm-blue px-2 py-2">类别</th><th class="border border-tcm-blue px-2 py-2">类型</th><th class="border border-tcm-blue px-2 py-2">含义/病机</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">类别</th><th class="border border-tcm-blue px-2 py-2">类型</th><th class="border border-tcm-blue px-2 py-2">含义/病机</th></tr></thead>
         <tbody>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"><b>寒热4型</b></td><td class="border border-tcm-blue px-2 py-2">恶寒发热</td><td class="border border-tcm-blue px-2 py-2">风寒袭表，卫阳被遏</td></tr>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"></td><td class="border border-tcm-blue px-2 py-2">寒热往来</td><td class="border border-tcm-blue px-2 py-2">半表半里(少阳证)</td></tr>
@@ -510,7 +510,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">问疼痛8种性质对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-cyan-700 to-teal-700 text-white"><th class="border border-tcm-blue px-2 py-2">疼痛性质</th><th class="border border-tcm-blue px-2 py-2">对应证型</th><th class="border border-tcm-blue px-2 py-2">记忆要点</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">疼痛性质</th><th class="border border-tcm-blue px-2 py-2">对应证型</th><th class="border border-tcm-blue px-2 py-2">记忆要点</th></tr></thead>
         <tbody>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"><b>剧痛</b></td><td class="border border-tcm-blue px-2 py-2">实证</td><td class="border border-tcm-blue px-2 py-2">痛势剧烈，拒按</td></tr>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"><b>隐痛</b></td><td class="border border-tcm-blue px-2 py-2">虚证</td><td class="border border-tcm-blue px-2 py-2">痛势轻微，喜按</td></tr>
@@ -523,7 +523,7 @@ function toggleSection(id) {
         </tbody>
       </table>
     </div>
-    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 border border-indigo-300">
+    <div class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] rounded-lg p-4 border border-indigo-300">
       <p class="font-bold text-indigo-700 mb-2">问睡眠要点</p>
       <p class="text-sm"><b>失眠：</b>阴虚阳盛(阳不入阴)</p>
       <p class="text-sm"><b>嗜睡：</b>阳虚阴盛或痰湿困脾</p>
@@ -531,7 +531,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">切诊4概念</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-cyan-700 to-indigo-700 text-white"><th class="border border-tcm-blue px-2 py-2">概念</th><th class="border border-tcm-blue px-2 py-2">含义</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">概念</th><th class="border border-tcm-blue px-2 py-2">含义</th></tr></thead>
         <tbody>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"><b>三部九候</b></td><td class="border border-tcm-blue px-2 py-2">上中下三部各取3个动脉搏动处，共9处</td></tr>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"><b>一息四至</b></td><td class="border border-tcm-blue px-2 py-2">正常人呼吸一次脉搏跳动4次为常脉</td></tr>
@@ -547,7 +547,7 @@ function toggleSection(id) {
 
 
 <section id="m11" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m11-content')" class="toggle-btn w-full bg-gradient-to-r from-sky-700 to-sky-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m11-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块11</span><span class="ml-2 text-lg">中药学全套</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -578,7 +578,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">副作用/毒性反应/不良反应3概念辨析</h3>
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-tcm-red to-tcm-blue text-white"><th class="border border-tcm-blue px-3 py-2">概念</th><th class="border border-tcm-blue px-3 py-2">定义</th><th class="border border-tcm-blue px-3 py-2">与剂量关系</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-3 py-2">概念</th><th class="border border-tcm-blue px-3 py-2">定义</th><th class="border border-tcm-blue px-3 py-2">与剂量关系</th></tr></thead>
         <tbody>
           <tr><td class="border border-tcm-blue px-3 py-2 font-bold">副作用</td><td class="border border-tcm-blue px-3 py-2">治疗量下出现的与用药目的无关的反应</td><td class="border border-tcm-blue px-3 py-2">治疗量即出现</td></tr>
           <tr><td class="border border-tcm-blue px-3 py-2 font-bold">毒性反应</td><td class="border border-tcm-blue px-3 py-2">剂量过大或长期用药蓄积引起的严重反应</td><td class="border border-tcm-blue px-3 py-2">剂量过大或蓄积</td></tr>
@@ -589,7 +589,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">配伍七情对照表</h3>
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-sky-700 to-tcm-blue text-white"><th class="border border-tcm-blue px-3 py-2">七情</th><th class="border border-tcm-blue px-3 py-2">含义</th><th class="border border-tcm-blue px-3 py-2">效果</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-3 py-2">七情</th><th class="border border-tcm-blue px-3 py-2">含义</th><th class="border border-tcm-blue px-3 py-2">效果</th></tr></thead>
         <tbody>
           <tr><td class="border border-tcm-blue px-3 py-2 font-bold">单行</td><td class="border border-tcm-blue px-3 py-2">单用一味药</td><td class="border border-tcm-blue px-3 py-2">独自生效</td></tr>
           <tr><td class="border border-tcm-blue px-3 py-2 font-bold">相须</td><td class="border border-tcm-blue px-3 py-2">两味功效相似药物合用</td><td class="border border-tcm-blue px-3 py-2 font-bold text-green-700">增效</td></tr>
@@ -611,7 +611,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-cyan-700 text-lg border-b border-tcm-accent pb-1">五味功能对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-sky-700 to-sky-900 text-white"><th class="border border-tcm-blue px-2 py-2">味</th><th class="border border-tcm-blue px-2 py-2">口诀</th><th class="border border-tcm-blue px-2 py-2">功能详解</th><th class="border border-tcm-blue px-2 py-2">举例</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">味</th><th class="border border-tcm-blue px-2 py-2">口诀</th><th class="border border-tcm-blue px-2 py-2">功能详解</th><th class="border border-tcm-blue px-2 py-2">举例</th></tr></thead>
         <tbody>
           <tr class="bg-green-50"><td class="border border-tcm-blue px-2 py-2"><b>辛</b></td><td class="border border-tcm-blue px-2 py-2">散行</td><td class="border border-tcm-blue px-2 py-2">发散、行气、行血</td><td class="border border-tcm-blue px-2 py-2">麻黄、薄荷、川芎</td></tr>
           <tr class="bg-sky-50"><td class="border border-tcm-blue px-2 py-2"><b>甘</b></td><td class="border border-tcm-blue px-2 py-2">补缓</td><td class="border border-tcm-blue px-2 py-2">补益、和中、缓急</td><td class="border border-tcm-blue px-2 py-2">人参、甘草、饴糖</td></tr>
@@ -628,7 +628,7 @@ function toggleSection(id) {
 
 
 <section id="m12" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m12-content')" class="toggle-btn w-full bg-gradient-to-r from-emerald-700 to-emerald-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m12-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块12</span><span class="ml-2 text-lg">方剂学全套</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -657,7 +657,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-emerald-700 text-lg border-b border-tcm-accent pb-1">君臣佐使详解表</h3>
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-emerald-700 to-teal-700 text-white"><th class="border border-tcm-blue px-3 py-2">组成</th><th class="border border-tcm-blue px-3 py-2">口诀</th><th class="border border-tcm-blue px-3 py-2">含义详解</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-3 py-2">组成</th><th class="border border-tcm-blue px-3 py-2">口诀</th><th class="border border-tcm-blue px-3 py-2">含义详解</th></tr></thead>
         <tbody>
           <tr class="bg-emerald-50"><td class="border border-tcm-blue px-3 py-2 font-bold">君药</td><td class="border border-tcm-blue px-3 py-2">君主主治</td><td class="border border-tcm-blue px-3 py-2">针对主病主证起主要治疗作用的药物</td></tr>
           <tr class="bg-green-50"><td class="border border-tcm-blue px-3 py-2 font-bold">臣药</td><td class="border border-tcm-blue px-3 py-2">臣辅助</td><td class="border border-tcm-blue px-3 py-2">辅助君药加强治疗作用的药物</td></tr>
@@ -670,7 +670,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-emerald-700 text-lg border-b border-tcm-accent pb-1">八法含义对照表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-emerald-700 to-emerald-900 text-white"><th class="border border-tcm-blue px-2 py-2">八法</th><th class="border border-tcm-blue px-2 py-2">含义</th><th class="border border-tcm-blue px-2 py-2">适用</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">八法</th><th class="border border-tcm-blue px-2 py-2">含义</th><th class="border border-tcm-blue px-2 py-2">适用</th></tr></thead>
         <tbody>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"><b>汗</b></td><td class="border border-tcm-blue px-2 py-2">发汗解表</td><td class="border border-tcm-blue px-2 py-2">表证</td></tr>
           <tr class="bg-white"><td class="border border-tcm-blue px-2 py-2"><b>吐</b></td><td class="border border-tcm-blue px-2 py-2">涌吐痰涎宿食</td><td class="border border-tcm-blue px-2 py-2">痰食停留上部</td></tr>
@@ -689,7 +689,7 @@ function toggleSection(id) {
 
 
 <section id="m13" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('m13-content')" class="toggle-btn w-full bg-gradient-to-r from-rose-700 to-rose-900 text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('m13-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">模块13</span><span class="ml-2 text-lg">高频易混概念对比</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
@@ -715,7 +715,7 @@ function toggleSection(id) {
     <h3 class="font-bold text-rose-700 text-lg border-b border-tcm-accent pb-1">6组高频易混概念对比表</h3>
     <div class="overflow-x-auto">
 <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-tcm-red to-tcm-blue text-white"><th class="border border-tcm-blue px-2 py-2">对比组</th><th class="border border-tcm-blue px-2 py-2">概念A</th><th class="border border-tcm-blue px-2 py-2">概念B(或C)</th><th class="border border-tcm-blue px-2 py-2">核心区别</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-2 py-2">对比组</th><th class="border border-tcm-blue px-2 py-2">概念A</th><th class="border border-tcm-blue px-2 py-2">概念B(或C)</th><th class="border border-tcm-blue px-2 py-2">核心区别</th></tr></thead>
         <tbody>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-2 py-2"><b>1.症vs证vs病</b></td><td class="border border-tcm-blue px-2 py-2">症=临床表现</td><td class="border border-tcm-blue px-2 py-2">证=病因病位病性病势病理概括 / 病=全过程特点规律概括</td><td class="border border-tcm-blue px-2 py-2">症是现象，证是本质概括，病是全过程</td></tr>
           <tr class="bg-blue-50"><td class="border border-tcm-blue px-2 py-2"><b>2.伤寒vs中寒</b></td><td class="border border-tcm-blue px-2 py-2">伤寒=寒邪伤肌表阻卫阳</td><td class="border border-tcm-blue px-2 py-2">中寒=寒邪直中于里伤脏腑阳气</td><td class="border border-tcm-blue px-2 py-2">伤寒=表寒，中寒=里寒</td></tr>
@@ -731,14 +731,14 @@ function toggleSection(id) {
 </section>
 
 <section id="summary" class="bg-white rounded-xl shadow-md overflow-hidden">
-  <button onclick="toggleSection('summary-content')" class="toggle-btn w-full bg-gradient-to-r from-tcm-accent to-tcm-red text-white text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
+  <button onclick="toggleSection('summary-content')" class="toggle-btn w-full bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark text-left px-6 py-4 flex items-center justify-between hover:opacity-90 transition">
     <div><span class="font-bold text-xl">核心口诀速查表</span><span class="ml-2 text-lg">13模块一句话汇总</span></div>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
   <div id="summary-content" class="collapsible-content px-6 py-5 space-y-4">
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse border border-tcm-blue">
-        <thead><tr class="bg-gradient-to-r from-tcm-dark to-tcm-blue text-tcm-cream"><th class="border border-tcm-blue px-3 py-2">模块</th><th class="border border-tcm-blue px-3 py-2">一句话口诀</th></tr></thead>
+        <thead><tr class="bg-gradient-to-r from-[#e8fbf4] to-[#fff0e8] text-tcm-dark"><th class="border border-tcm-blue px-3 py-2">模块</th><th class="border border-tcm-blue px-3 py-2">一句话口诀</th></tr></thead>
         <tbody>
           <tr class="bg-red-50"><td class="border border-tcm-blue px-3 py-2 font-bold">01五脏</td><td class="border border-tcm-blue px-3 py-2">心血脉神志红君主/肺气呼吸宣降白华盖/脾运化升清统血黄仓廪/肝疏泄藏血绿将军/肾藏精水纳气黑先天</td></tr>
           <tr class="bg-sky-50"><td class="border border-tcm-blue px-3 py-2 font-bold">02别称</td><td class="border border-tcm-blue px-3 py-2">华盖将军仓廪官，先天肾后天脾，藏血肝统血脾</td></tr>
@@ -761,7 +761,7 @@ function toggleSection(id) {
 
 </main>
 
-<footer class="bg-tcm-dark text-tcm-cream text-center py-6 px-4 mt-8">
+<footer class="bg-gradient-to-r from-[#fff7ef] to-[#e8fbf4] text-tcm-dark text-center py-6 px-4 mt-8 border-t border-teal-100">
   <p class="text-sm">中医药学概论 重点难点口诀速记手册 &mdash; 13模块全覆盖</p>
   <p class="text-xs text-tcm-accent mt-2">适合A4打印 | 点击各模块标题可展开/折叠内容</p>
 </footer>

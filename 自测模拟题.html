@@ -6,41 +6,41 @@
 <title>中医学自测模拟题</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{tcm:{accent:'#0891B2',red:'#C41E3A',blue: '#2563EB',cream: '#F0F9FF',dark: '#3730A3',green:'#5B8C5A'}}}}}
+tailwind.config={theme:{extend:{colors:{tcm:{accent:'#FF9F84',red:'#C41E3A',blue: '#4FBFA8',cream: '#FFF9F2',dark: '#2F8F7C',green:'#5FCFB5'}}}}}
 </script>
 <style>
 ::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:#F0F9FF}
-::-webkit-scrollbar-thumb{background:#0891B2;border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:#2563EB}
+::-webkit-scrollbar-track{background:#FFF9F2}
+::-webkit-scrollbar-thumb{background:#FF9F84;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#4FBFA8}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}
 }.fade-in{animation:fadeIn .3s ease-out}
 .answer-reveal{max-height:0;overflow:hidden;transition:max-height .5s ease-out,padding .3s ease}
 .answer-reveal.open{max-height:4000px;padding-top:12px;padding-bottom:12px}
-.nav-link.active{background-color:#0891B2;color:#3730A3}
-.question-card:hover{box-shadow:0 4px 20px rgba(37,99,235,.12)}
-input:focus{outline:none;border-color:#0891B2;box-shadow:0 0 0 3px rgba(20,184,166,.22)}
+.nav-link.active{background-color:#FFF0E8;color:#2F8F7C;border-color:#FFD6C7}
+.question-card:hover{box-shadow:0 4px 20px rgba(255,159,132,.13)}
+input:focus{outline:none;border-color:#FF9F84;box-shadow:0 0 0 3px rgba(95,207,181,.24)}
 .mcq-option{transition:all .2s;cursor:pointer}
 .mcq-option:hover:not(.answered){transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.mcq-option.correct{background-color:#5B8C5A!important;color:white!important;border-color:#5B8C5A!important}
+.mcq-option.correct{background-color:#5FCFB5!important;color:white!important;border-color:#5FCFB5!important}
 .mcq-option.wrong{background-color:#C41E3A!important;color:white!important;border-color:#C41E3A!important}
 .score-bar{transition:width 1s ease-out}
 </style>
 </head>
 <body class="bg-tcm-cream min-h-screen font-serif">
 
-<nav id="navbar" class="sticky top-0 z-50 bg-tcm-dark shadow-lg">
+<nav id="navbar" class="sticky top-0 z-50 bg-white/90 shadow-sm border-b border-teal-100">
 <div class="max-w-5xl mx-auto px-4">
 <div class="flex items-center justify-between py-3">
 <h1 class="text-tcm-accent font-bold text-lg tracking-wider">中医学自测模拟题</h1>
-<button onclick="resetAll()" class="text-tcm-cream hover:text-tcm-accent text-sm px-3 py-1 border border-tcm-accent/50 rounded hover:bg-tcm-accent/20 transition">重置答题</button>
+<button onclick="resetAll()" class="text-tcm-dark/70 hover:text-tcm-accent text-sm px-3 py-1 border border-tcm-accent/50 rounded hover:bg-tcm-accent/20 transition">重置答题</button>
 </div>
 <div class="flex flex-wrap gap-2 pb-3">
-<a href="#fill-blank" class="nav-link text-sm px-4 py-2 rounded-lg bg-tcm-blue/80 text-tcm-cream hover:bg-tcm-accent hover:text-tcm-dark transition font-medium">一、填空题</a>
-<a href="#mcq" class="nav-link text-sm px-4 py-2 rounded-lg bg-tcm-blue/80 text-tcm-cream hover:bg-tcm-accent hover:text-tcm-dark transition font-medium">二、选择题</a>
-<a href="#term-def" class="nav-link text-sm px-4 py-2 rounded-lg bg-tcm-blue/80 text-tcm-cream hover:bg-tcm-accent hover:text-tcm-dark transition font-medium">三、名词解释</a>
-<a href="#short-answer" class="nav-link text-sm px-4 py-2 rounded-lg bg-tcm-blue/80 text-tcm-cream hover:bg-tcm-accent hover:text-tcm-dark transition font-medium">四、简答题</a>
-<a href="#essay" class="nav-link text-sm px-4 py-2 rounded-lg bg-tcm-blue/80 text-tcm-cream hover:bg-tcm-accent hover:text-tcm-dark transition font-medium">五、论述题</a>
+<a href="#fill-blank" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">一、填空题</a>
+<a href="#mcq" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">二、选择题</a>
+<a href="#term-def" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">三、名词解释</a>
+<a href="#short-answer" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">四、简答题</a>
+<a href="#essay" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">五、论述题</a>
 </div>
 </div>
 </nav>
@@ -50,7 +50,7 @@ input:focus{outline:none;border-color:#0891B2;box-shadow:0 0 0 3px rgba(20,184,1
 <div class="w-12 h-12 rounded-full bg-tcm-accent/20 flex items-center justify-center"><span class="text-2xl text-tcm-accent">&#9788;</span></div>
 <div><h2 class="text-tcm-dark text-2xl font-bold">中医基础理论自测模拟题</h2><p class="text-tcm-blue text-sm">覆盖全部72小节知识点 | 填空40题 + 选择20题 + 名词解释15题 + 简答8题 + 论述3题</p></div>
 </div>
-<div class="h-1 bg-gradient-to-r from-tcm-accent via-tcm-red to-tcm-blue rounded-full"></div>
+<div class="h-1 bg-gradient-to-r from-tcm-blue via-tcm-accent to-pink-200 rounded-full"></div>
 </div>
 
 <!-- ===== 一、填空题 ===== -->

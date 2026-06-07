@@ -11,12 +11,12 @@ tailwind.config = {
     extend: {
       colors: {
         tcm: {
-          accent: '#0891B2',
+          accent: '#FF9F84',
           red: '#C41E3A',
-          blue: '#2563EB',
-          cream: '#F0F9FF',
-          dark: '#3730A3',
-          green: '#5B8C5A'
+          blue: '#4FBFA8',
+          cream: '#FFF9F2',
+          dark: '#2F8F7C',
+          green: '#5FCFB5'
         }
       }
     }
@@ -46,19 +46,19 @@ tailwind.config = {
 
 /* Scrollbar styling for card backs */
 .flip-card-back::-webkit-scrollbar { width: 4px; }
-.flip-card-back::-webkit-scrollbar-thumb { background: #0891B2; border-radius: 2px; }
+.flip-card-back::-webkit-scrollbar-thumb { background: #FF9F84; border-radius: 2px; }
 
 /* Keyword highlight */
-.kw { color: #C41E3A; font-weight: 700; }
-.kw-accent { color: #0891B2; font-weight: 700; }
-.kw-green { color: #5B8C5A; font-weight: 700; }
+.kw { color: #2F8F7C; font-weight: 700; }
+.kw-accent { color: #FF9F84; font-weight: 700; }
+.kw-green { color: #5FCFB5; font-weight: 700; }
 
 /* Progress bar animation */
 .progress-fill { transition: width 0.3s ease; }
 
 /* Card mastery border animation */
-.card-mastered { border-color: #5B8C5A !important; box-shadow: 0 0 12px rgba(91,140,90,0.3); }
-.card-unmastered { border-color: #D946EF !important; box-shadow: 0 0 12px rgba(217,70,239,0.24); }
+.card-mastered { border-color: #5FCFB5 !important; box-shadow: 0 0 12px rgba(95,207,181,0.28); }
+.card-unmastered { border-color: #FF9F84 !important; box-shadow: 0 0 12px rgba(255,159,132,0.26); }
 
 /* Button hover effects */
 .mastery-btn { transition: all 0.2s ease; }
@@ -67,10 +67,10 @@ tailwind.config = {
 /* Chapter nav button */
 .ch-btn { transition: all 0.15s ease; }
 .ch-btn:hover { transform: translateY(-1px); }
-.ch-btn.active { box-shadow: 0 0 0 2px #C41E3A; }
+.ch-btn.active { background: #FFF0E8; box-shadow: 0 0 0 2px #FFB8A0; }
 
 /* Search input focus */
-.search-input:focus { outline: none; box-shadow: 0 0 0 2px #0891B2; }
+.search-input:focus { outline: none; box-shadow: 0 0 0 2px #FF9F84; }
 
 /* Card hover subtle lift */
 .flip-card:not(.flipped):hover .flip-card-inner { transform: rotateY(5deg); }
@@ -86,34 +86,34 @@ tailwind.config = {
 <body class="bg-tcm-cream min-h-screen">
 
 <!-- Top Progress Bar -->
-<div class="sticky top-0 z-50 bg-tcm-dark shadow-lg">
+<div class="sticky top-0 z-50 bg-white/90 shadow-sm border-b border-teal-100">
   <!-- Progress -->
-  <div class="w-full h-2 bg-tcm-dark">
-    <div id="progressBar" class="progress-fill h-2 bg-gradient-to-r from-tcm-accent to-tcm-red" style="width:0%"></div>
+  <div class="w-full h-2 bg-[#ffe8dc]">
+    <div id="progressBar" class="progress-fill h-2 bg-gradient-to-r from-tcm-blue via-tcm-accent to-pink-200" style="width:0%"></div>
   </div>
   <!-- Header -->
   <div class="px-4 py-3 flex flex-wrap items-center gap-2">
-    <h1 class="text-tcm-accent font-bold text-lg tracking-wide mr-4">中医速记卡片</h1>
-    <span id="progressText" class="text-tcm-cream text-sm mr-4">已掌握: 0 / 0</span>
+    <h1 class="text-tcm-accent font-bold text-lg tracking-wide mr-4">中医卡片闯关</h1>
+    <span id="progressText" class="text-tcm-dark text-sm mr-4">通关: 0 / 0</span>
     <div class="flex-1 min-w-[200px]">
       <input id="searchInput" type="text" placeholder="搜索关键词..." class="search-input w-full px-3 py-1.5 rounded bg-tcm-cream text-tcm-dark text-sm border border-tcm-accent/30">
     </div>
-    <button onclick="resetAll()" class="text-xs text-tcm-cream/70 hover:text-tcm-accent transition">重置进度</button>
+    <button onclick="resetAll()" class="text-xs text-tcm-dark/60 hover:text-tcm-accent transition">重置进度</button>
   </div>
   <!-- Chapter Nav -->
   <div class="px-4 pb-2 flex flex-wrap gap-1.5" id="chapterNav">
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40 active" onclick="filterChapter('all')" data-ch="all">全部</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(1)" data-ch="1">第1章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(2)" data-ch="2">第2章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(3)" data-ch="3">第3章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(4)" data-ch="4">第4章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(5)" data-ch="5">第5章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(6)" data-ch="6">第6章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(7)" data-ch="7">第7章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(8)" data-ch="8">第8章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(9)" data-ch="9">第9章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(10)" data-ch="10">第10章</button>
-    <button class="ch-btn px-2 py-1 rounded text-xs bg-tcm-accent/20 text-tcm-cream border border-tcm-accent/40" onclick="filterChapter(12)" data-ch="12">高频</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100 active" onclick="filterChapter('all')" data-ch="all">全部</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(1)" data-ch="1">第1章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(2)" data-ch="2">第2章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(3)" data-ch="3">第3章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(4)" data-ch="4">第4章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(5)" data-ch="5">第5章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(6)" data-ch="6">第6章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(7)" data-ch="7">第7章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(8)" data-ch="8">第8章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(9)" data-ch="9">第9章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(10)" data-ch="10">第10章</button>
+    <button class="ch-btn px-2 py-1 rounded text-xs bg-white text-tcm-dark border border-teal-100" onclick="filterChapter(12)" data-ch="12">高频</button>
   </div>
 </div>
 
@@ -363,7 +363,7 @@ function updateProgress() {
   const mastered = visibleCards.filter(c => mastery[c.id] === 'mastered').length;
   const pct = total > 0 ? (mastered / total * 100) : 0;
   document.getElementById('progressBar').style.width = pct + '%';
-  document.getElementById('progressText').textContent = `已掌握: ${mastered} / ${total}`;
+  document.getElementById('progressText').textContent = `通关: ${mastered} / ${total}`;
 }
 
 function getVisibleCards() {
@@ -398,9 +398,9 @@ function renderCards() {
     const m = mastery[card.id] || '';
     const borderClass = m === 'mastered' ? 'card-mastered' : (m === 'unmastered' ? 'card-unmastered' : '');
     const badge = m === 'mastered'
-      ? '<span class="absolute top-2 right-2 text-xs bg-green-600 text-white px-1.5 py-0.5 rounded">已掌握</span>'
+      ? '<span class="absolute top-2 right-2 text-xs bg-[#e8fbf4] text-tcm-dark border border-teal-100 px-1.5 py-0.5 rounded">已通关</span>'
       : (m === 'unmastered'
-        ? '<span class="absolute top-2 right-2 text-xs bg-fuchsia-600 text-white px-1.5 py-0.5 rounded">未掌握</span>'
+        ? '<span class="absolute top-2 right-2 text-xs bg-[#fff0e8] text-tcm-dark border border-[#ffd6c7] px-1.5 py-0.5 rounded">再挑战</span>'
         : '');
 
     return `
@@ -414,17 +414,17 @@ function renderCards() {
           <div class="text-xs text-tcm-accent font-semibold mb-2">${chapterNames[card.ch]}</div>
           <div class="text-tcm-dark font-bold text-sm leading-relaxed flex-1 flex items-center">${card.front}</div>
           <div class="flex gap-2 mt-3">
-            <button onclick="event.stopPropagation();setMastery(${card.id},'mastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-tcm-green text-white hover:bg-tcm-green/80">已掌握✅</button>
-            <button onclick="event.stopPropagation();setMastery(${card.id},'unmastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-fuchsia-600 text-white hover:bg-fuchsia-600/80">未掌握❌</button>
+            <button onclick="event.stopPropagation();setMastery(${card.id},'mastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-tcm-green text-white hover:bg-tcm-green/80">通关</button>
+            <button onclick="event.stopPropagation();setMastery(${card.id},'unmastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-tcm-accent text-white hover:bg-tcm-accent/80">再练</button>
           </div>
           <div class="text-center text-xs text-tcm-blue/40 mt-1">点击翻转查看答案</div>
         </div>
-        <div class="flip-card-back bg-tcm-cream rounded-lg border-2 border-tcm-red/30 p-4 flex flex-col shadow-md">
+        <div class="flip-card-back bg-[#fff7ef] rounded-lg border-2 border-tcm-accent/30 p-4 flex flex-col shadow-md">
           <div class="text-xs text-tcm-red font-semibold mb-2">${chapterNames[card.ch]} · 答案</div>
           <div class="text-tcm-dark text-sm leading-relaxed flex-1 overflow-y-auto">${card.back}</div>
           <div class="flex gap-2 mt-3">
-            <button onclick="event.stopPropagation();setMastery(${card.id},'mastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-tcm-green text-white hover:bg-tcm-green/80">已掌握✅</button>
-            <button onclick="event.stopPropagation();setMastery(${card.id},'unmastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-fuchsia-600 text-white hover:bg-fuchsia-600/80">未掌握❌</button>
+            <button onclick="event.stopPropagation();setMastery(${card.id},'mastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-tcm-green text-white hover:bg-tcm-green/80">通关</button>
+            <button onclick="event.stopPropagation();setMastery(${card.id},'unmastered')" class="mastery-btn flex-1 py-1 rounded text-xs font-bold bg-tcm-accent text-white hover:bg-tcm-accent/80">再练</button>
           </div>
           <div class="text-center text-xs text-tcm-blue/40 mt-1">点击翻回正面</div>
         </div>
@@ -457,8 +457,8 @@ function setMastery(id, status) {
 
   // Add new badge
   const badgeHTML = status === 'mastered'
-    ? '<span class="absolute top-2 right-2 text-xs bg-green-600 text-white px-1.5 py-0.5 rounded">已掌握</span>'
-    : '<span class="absolute top-2 right-2 text-xs bg-fuchsia-600 text-white px-1.5 py-0.5 rounded">未掌握</span>';
+    ? '<span class="absolute top-2 right-2 text-xs bg-[#e8fbf4] text-tcm-dark border border-teal-100 px-1.5 py-0.5 rounded">已通关</span>'
+    : '<span class="absolute top-2 right-2 text-xs bg-[#fff0e8] text-tcm-dark border border-[#ffd6c7] px-1.5 py-0.5 rounded">再挑战</span>';
   el.insertAdjacentHTML('afterbegin', badgeHTML);
 }
 
@@ -491,7 +491,7 @@ renderCards();
 </script>
 
 <!-- Footer -->
-<footer class="bg-tcm-dark text-tcm-cream/60 text-center py-4 text-xs mt-8">
+<footer class="bg-white text-tcm-dark/50 text-center py-4 text-xs mt-8">
   中医药学概论速记卡片 · 共 <span id="totalCount"></span> 张 · 覆盖全部核心考点
 </footer>
 
