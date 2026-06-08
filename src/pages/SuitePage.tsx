@@ -1,6 +1,7 @@
 import { type SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { CalendarDays, ClipboardList, Layers3, NotebookTabs } from 'lucide-react';
 import { useAutoHideOnScroll } from '../hooks/useAutoHideOnScroll';
+import { BackToTop } from '../components/BackToTop';
 
 const assetVersion = '20260608-tablet-nav-perf';
 
@@ -67,8 +68,6 @@ export function SuitePage() {
         setFrameNavHidden(false);
       } else if (diff > delta && currentY > hideAfter) {
         setFrameNavHidden(true);
-      } else if (diff < -delta) {
-        setFrameNavHidden(false);
       }
 
       lastY = currentY;
@@ -83,9 +82,7 @@ export function SuitePage() {
     }
 
     function onWheel(event: WheelEvent) {
-      if (event.deltaY < -4) {
-        setFrameNavHidden(false);
-      } else if (event.deltaY > 12 && Math.max(frameWindow?.scrollY || 0, 0) > hideAfter) {
+      if (event.deltaY > 12 && Math.max(frameWindow?.scrollY || 0, 0) > hideAfter) {
         setFrameNavHidden(true);
       }
     }
@@ -99,9 +96,7 @@ export function SuitePage() {
       if (typeof currentTouchY !== 'number' || lastTouchY === null) return;
 
       const touchDiff = currentTouchY - lastTouchY;
-      if (touchDiff > 5) {
-        setFrameNavHidden(false);
-      } else if (touchDiff < -10 && Math.max(frameWindow?.scrollY || 0, 0) > hideAfter) {
+      if (touchDiff < -10 && Math.max(frameWindow?.scrollY || 0, 0) > hideAfter) {
         setFrameNavHidden(true);
       }
 
@@ -154,6 +149,8 @@ export function SuitePage() {
       </nav>
 
       <iframe className="suite-frame" title={activeModule.label} src={activeHref} onLoad={handleFrameLoad} />
+
+      <BackToTop />
     </main>
   );
 }

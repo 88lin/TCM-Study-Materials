@@ -1141,6 +1141,50 @@ input:focus-visible {
   }
 }
 
+/* ── Back to top button ── */
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.5rem;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgb(170 180 235 / 0.6);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgb(105 125 215 / 0.9), rgb(160 175 240 / 0.85));
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgb(105 125 215 / 0.25);
+  backdrop-filter: blur(8px);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease;
+  animation: back-to-top-in 280ms var(--ease-out);
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgb(105 125 215 / 0.35);
+}
+
+.back-to-top:active {
+  transform: scale(0.92);
+}
+
+@keyframes back-to-top-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (max-width: 380px) {
   .flashcards-game .mx-auto,
   .flashcards-game section {

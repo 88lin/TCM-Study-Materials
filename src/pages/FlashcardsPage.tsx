@@ -13,6 +13,7 @@ import {
   Trophy,
   X
 } from 'lucide-react';
+import { BackToTop } from '../components/BackToTop';
 import { Flashcard } from '../components/Flashcard';
 import { cards, chapterNames, type ChapterId, type StudyCard } from '../data/cards';
 import { useAutoHideOnScroll } from '../hooks/useAutoHideOnScroll';
@@ -499,6 +500,8 @@ export function FlashcardsPage() {
           </form>
         </div>
       ) : null}
+
+      <BackToTop />
     </main>
   );
 }

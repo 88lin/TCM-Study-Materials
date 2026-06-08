@@ -18,8 +18,6 @@ export function useAutoHideOnScroll(hideAfter = 96) {
         setHidden(false);
       } else if (diff > delta && currentY > hideAfter) {
         setHidden(true);
-      } else if (diff < -delta) {
-        setHidden(false);
       }
 
       lastScrollY.current = currentY;
@@ -34,9 +32,7 @@ export function useAutoHideOnScroll(hideAfter = 96) {
     }
 
     function onWheel(event: WheelEvent) {
-      if (event.deltaY < -4) {
-        setHidden(false);
-      } else if (event.deltaY > 12 && window.scrollY > hideAfter) {
+      if (event.deltaY > 12 && window.scrollY > hideAfter) {
         setHidden(true);
       }
     }
@@ -50,9 +46,7 @@ export function useAutoHideOnScroll(hideAfter = 96) {
       if (typeof currentTouchY !== 'number' || lastTouchY === null) return;
 
       const touchDiff = currentTouchY - lastTouchY;
-      if (touchDiff > 5) {
-        setHidden(false);
-      } else if (touchDiff < -10 && window.scrollY > hideAfter) {
+      if (touchDiff < -10 && window.scrollY > hideAfter) {
         setHidden(true);
       }
 
