@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Check,
   ChevronDown,
@@ -22,6 +22,20 @@ type MasteryStatus = 'mastered' | 'unmastered';
 type StatusFilter = 'all' | MasteryStatus | 'fresh';
 type MasteryMap = Record<number, MasteryStatus>;
 
+function getInitialVisibleCards() {
+  if (typeof window === 'undefined') return 48;
+  if (window.innerWidth < 560) return 18;
+  if (window.innerWidth < 900) return 36;
+  return 48;
+}
+
+function getVisibleCardStep() {
+  if (typeof window === 'undefined') return 36;
+  if (window.innerWidth < 560) return 18;
+  if (window.innerWidth < 900) return 24;
+  return 36;
+}
+
 const chapterOptions: Array<{ id: ChapterFilter; label: string }> = [
   { id: 'all', label: '全部' },
   ...Object.entries(chapterNames).map(([id]) => ({
@@ -43,7 +57,9 @@ export function FlashcardsPage() {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [query, setQuery] = useState('');
   const [expandedControls, setExpandedControls] = useState(false);
-  const navHidden = useAutoHideOnScroll();
+  const [visibleCount, setVisibleCount] = useState(getInitialVisibleCards);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const navHidden = useAutoHideOnScroll(48);
 
   const normalizedQuery = query.trim().toLocaleLowerCase();
 
@@ -61,6 +77,27 @@ export function FlashcardsPage() {
     });
   }, [chapter, mastery, normalizedQuery, statusFilter]);
 
+  useEffect(() => {
+    setVisibleCount(getInitialVisibleCards());
+  }, [chapter, normalizedQuery, statusFilter]);
+
+  useEffect(() => {
+    const node = loadMoreRef.current;
+    if (!node || visibleCount >= filteredCards.length || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleCount((count) => Math.min(count + getVisibleCardStep(), filteredCards.length));
+        }
+      },
+      { rootMargin: '900px 0px 900px' }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [filteredCards.length, visibleCount]);
+
   const masteredCount = filteredCards.filter((card) => mastery[card.id] === 'mastered').length;
   const unmasteredCount = filteredCards.filter((card) => mastery[card.id] === 'unmastered').length;
   const progress = filteredCards.length ? Math.round((masteredCount / filteredCards.length) * 100) : 0;
@@ -68,6 +105,8 @@ export function FlashcardsPage() {
   const totalMastered = cards.filter((card) => mastery[card.id] === 'mastered').length;
   const totalUnmastered = cards.filter((card) => mastery[card.id] === 'unmastered').length;
   const totalProgress = Math.round((totalMastered / cards.length) * 100);
+  const visibleCards = filteredCards.slice(0, Math.min(visibleCount, filteredCards.length));
+  const hasMoreCards = visibleCards.length < filteredCards.length;
   const level = Math.max(1, Math.floor(totalMastered / 8) + 1);
   const levelStart = Math.floor(totalMastered / 8) * 8;
   const nextLevelAt = Math.min(cards.length, levelStart + 8);
@@ -76,26 +115,30 @@ export function FlashcardsPage() {
   const cardsToNextLevel = Math.max(nextLevelAt - totalMastered, 0);
   const nextLevelGoal = totalMastered >= cards.length ? '全图通关' : `距 Lv.${level + 1} 还差 ${cardsToNextLevel} 张`;
 
-  function setCardMastery(id: number, status: MasteryStatus) {
+  const setCardMastery = useCallback((id: number, status: MasteryStatus) => {
     setMastery((current) => ({ ...current, [id]: status }));
-  }
+  }, [setMastery]);
 
-  function clearCardMastery(id: number) {
+  const clearCardMastery = useCallback((id: number) => {
     setMastery((current) => {
       const next = { ...current };
       delete next[id];
       return next;
     });
-  }
+  }, [setMastery]);
 
-  function resetAll() {
+  const resetAll = useCallback(() => {
     const confirmed = window.confirm('确认重置所有掌握进度？');
     if (confirmed) setMastery({});
-  }
+  }, [setMastery]);
+
+  const showMoreCards = useCallback(() => {
+    setVisibleCount((count) => Math.min(count + getVisibleCardStep(), filteredCards.length));
+  }, [filteredCards.length]);
 
   return (
     <main className="flashcards-game min-h-screen text-slate-800">
-      <div className={navHidden ? 'flashcard-nav auto-hide-nav nav-hidden sticky top-0 z-40' : 'flashcard-nav auto-hide-nav sticky top-0 z-40'}>
+      <div className={navHidden ? 'flashcard-nav auto-hide-nav nav-hidden' : 'flashcard-nav auto-hide-nav'}>
         <div className="flashcard-nav-progress">
           <div style={{ width: `${progress}%` }} />
         </div>
@@ -210,8 +253,8 @@ export function FlashcardsPage() {
         </div>
 
         {filteredCards.length ? (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredCards.map((card) => (
+          <div className="flashcard-list grid gap-4">
+            {visibleCards.map((card) => (
               <Flashcard
                 key={card.id}
                 card={card}
@@ -229,6 +272,15 @@ export function FlashcardsPage() {
             </div>
           </div>
         )}
+
+        {hasMoreCards ? (
+          <div className="flashcard-load-more" ref={loadMoreRef}>
+            <button className="secondary-button" type="button" onClick={showMoreCards}>
+              加载更多
+            </button>
+            <span>{visibleCards.length} / {filteredCards.length}</span>
+          </div>
+        ) : null}
       </section>
     </main>
   );

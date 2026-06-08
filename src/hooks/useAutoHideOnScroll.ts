@@ -8,6 +8,7 @@ export function useAutoHideOnScroll(hideAfter = 96) {
   useEffect(() => {
     const delta = 8;
     const showAtTop = 24;
+    let lastTouchY: number | null = null;
 
     function update() {
       const currentY = Math.max(window.scrollY, 0);
@@ -32,9 +33,43 @@ export function useAutoHideOnScroll(hideAfter = 96) {
       }
     }
 
+    function onWheel(event: WheelEvent) {
+      if (event.deltaY < -4) {
+        setHidden(false);
+      } else if (event.deltaY > 12 && window.scrollY > hideAfter) {
+        setHidden(true);
+      }
+    }
+
+    function onTouchStart(event: TouchEvent) {
+      lastTouchY = event.touches[0]?.clientY ?? null;
+    }
+
+    function onTouchMove(event: TouchEvent) {
+      const currentTouchY = event.touches[0]?.clientY;
+      if (typeof currentTouchY !== 'number' || lastTouchY === null) return;
+
+      const touchDiff = currentTouchY - lastTouchY;
+      if (touchDiff > 5) {
+        setHidden(false);
+      } else if (touchDiff < -10 && window.scrollY > hideAfter) {
+        setHidden(true);
+      }
+
+      lastTouchY = currentTouchY;
+    }
+
     lastScrollY.current = Math.max(window.scrollY, 0);
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('wheel', onWheel, { passive: true });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+    };
   }, [hideAfter]);
 
   return hidden;

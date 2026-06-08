@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Check, Rotate3D, Sparkles, Undo2, X } from 'lucide-react';
 import { chapterNames, type StudyCard } from '../data/cards';
 
@@ -11,13 +11,19 @@ interface FlashcardProps {
   onClearStatus: (id: number) => void;
 }
 
-export function Flashcard({ card, status, onSetStatus, onClearStatus }: FlashcardProps) {
+export const Flashcard = memo(function Flashcard({ card, status, onSetStatus, onClearStatus }: FlashcardProps) {
   const [flipped, setFlipped] = useState(status === 'mastered');
+  const [hasSeenBack, setHasSeenBack] = useState(status === 'mastered');
   const statusClass = status === 'mastered' ? 'is-mastered' : status === 'unmastered' ? 'is-unmastered' : '';
+
+  function toggleFlipped() {
+    if (!flipped) setHasSeenBack(true);
+    setFlipped((value) => !value);
+  }
 
   return (
     <article className={`flashcard ${statusClass}`}>
-      <button className="flashcard-stage" type="button" onClick={() => setFlipped((value) => !value)} aria-pressed={flipped}>
+      <button className="flashcard-stage" type="button" onClick={toggleFlipped} aria-pressed={flipped}>
         <div className={flipped ? 'flashcard-inner is-flipped' : 'flashcard-inner'}>
           <section className="flashcard-face flashcard-front">
             <CardHeader card={card} status={status} />
@@ -32,7 +38,11 @@ export function Flashcard({ card, status, onSetStatus, onClearStatus }: Flashcar
 
           <section className="flashcard-face flashcard-back">
             <CardHeader card={card} status={status} inverted />
-            <div className="flashcard-answer" dangerouslySetInnerHTML={{ __html: card.back }} />
+            {hasSeenBack ? (
+              <div className="flashcard-answer" dangerouslySetInnerHTML={{ __html: card.back }} />
+            ) : (
+              <div className="flashcard-answer flashcard-answer-placeholder">翻开后显示答案</div>
+            )}
             <div className="flashcard-flip-hint is-back flex items-center justify-center gap-1.5 text-xs font-medium">
               <Rotate3D size={15} aria-hidden="true" />
               答案卡
@@ -56,7 +66,7 @@ export function Flashcard({ card, status, onSetStatus, onClearStatus }: Flashcar
       </div>
     </article>
   );
-}
+});
 
 function CardHeader({ card, status, inverted = false }: { card: StudyCard; status?: MasteryStatus; inverted?: boolean }) {
   const label =
