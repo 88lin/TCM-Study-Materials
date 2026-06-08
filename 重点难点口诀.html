@@ -4,18 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中医药学概论 - 重点难点口诀速记手册</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        tcm: { accent: '#1975FF', red: '#C41E3A', blue: '#2F8BFC', cream: '#F5F7FF', dark: '#192337', green: '#5FCFB5' }
-      }
-    }
-  }
-}
-</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/src/styles.css">
 <style>
 @page { size: A4; margin: 15mm; }
 @media print { .sticky-nav { position: static !important; } .collapsible-content { display: block !important; } .toggle-btn { display: none !important; } section { break-inside: avoid; } .no-print { display: none !important; } }
@@ -31,14 +21,14 @@ body {
 .collapsible-content { display: none; }
 .collapsible-content.open { display: block; animation: sectionReveal .34s cubic-bezier(0.22, 1, 0.36, 1); }
 @keyframes sectionReveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-.mnemonic-box { background: linear-gradient(135deg, rgba(226, 239, 255, .9) 0%, rgba(241, 237, 255, .86) 100%); color: var(--brand); font-size: 1.25rem; line-height: 1.8; padding: 1.25rem 1.5rem; border: 1px solid #c9daf8; border-radius: 1rem; box-shadow: 0 12px 30px rgba(25,117,255,.08); }
+.mnemonic-box { background: linear-gradient(135deg, rgba(226, 239, 255, .9) 0%, rgba(241, 237, 255, .86) 100%); color: var(--brand); font-size: 1.25rem; line-height: 1.8; padding: 1.25rem 1.5rem; border: 1px solid #c9daf8; border-radius: 1rem; box-shadow: 0 4px 14px rgba(25,117,255,.06); }
 .exam-tip { border-left: 4px solid var(--warm); background: rgba(255, 244, 241, .76); padding: 0.75rem 1rem; border-radius: 0.5rem; }
-.sticky-nav { background: rgba(255,255,255,.84) !important; border-bottom: 1px solid rgba(214,226,246,.86) !important; box-shadow: 0 1px 18px rgba(25,117,255,.08) !important; backdrop-filter: blur(18px) saturate(1.08); transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease, box-shadow 240ms ease; will-change: transform; }
+.sticky-nav { background: rgba(255,255,255,.94) !important; border-bottom: 1px solid rgba(214,226,246,.86) !important; box-shadow: 0 1px 10px rgba(25,117,255,.06) !important; transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease, box-shadow 240ms ease; will-change: transform; }
 .sticky-nav.nav-hidden { transform: translateY(calc(-100% - 0.5rem)); opacity: .96; pointer-events: none; }
 .sticky-nav a { border-color: rgba(214,226,246,.9) !important; border-radius: .5rem !important; transition: background-color .18s ease, border-color .18s ease, transform .18s cubic-bezier(.22,1,.36,1); }
 .sticky-nav a:hover { background: rgba(226,239,255,.78) !important; border-color: rgba(25,117,255,.35) !important; transform: translateY(-1px); }
 header { background: linear-gradient(135deg, rgba(251,253,255,.96), rgba(226,239,255,.9), rgba(241,237,255,.82)) !important; }
-main > section { border: 1px solid rgba(214,226,246,.88); box-shadow: 0 12px 30px rgba(25,117,255,.08) !important; }
+main > section { border: 1px solid rgba(214,226,246,.88); box-shadow: 0 4px 14px rgba(25,117,255,.06) !important; }
 .toggle-btn { background: linear-gradient(135deg, rgba(226,239,255,.96), rgba(241,237,255,.88)) !important; transition: background-color .18s ease, opacity .18s ease; }
 .toggle-btn:hover { opacity: 1 !important; background: linear-gradient(135deg, rgba(213,232,249,.98), rgba(232,228,255,.92)) !important; }
 table th { background: linear-gradient(135deg, #e2efff, #f1edff) !important; color: var(--ink); }
@@ -77,7 +67,7 @@ section { max-width: 100%; }
     border: 1px solid #d8efe7;
     border-radius: 0.75rem;
     background: #fff;
-    box-shadow: 0 8px 18px rgba(47, 143, 124, 0.07);
+    box-shadow: 0 2px 8px rgba(25,117,255,0.06);
   }
   td {
     border: 0 !important;

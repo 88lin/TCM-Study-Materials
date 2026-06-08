@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中医学自测模拟题</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config={theme:{extend:{colors:{tcm:{accent:'#1975FF',red:'#C41E3A',blue: '#2F8BFC',cream: '#F5F7FF',dark: '#192337',green:'#5FCFB5'}}}}}
-</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/src/styles.css">
 <style>
 :root{--ink:#192337;--muted:#4A5C76;--line:#d6e2f6;--brand:#1975FF;--brand-soft:#e2efff;--violet:#7954F1;--violet-soft:#f1edff;--warm:#F3B3A9;--warm-soft:#fff4f1}
 body{font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(circle at 8% -4%,rgba(121,185,252,.18),transparent 30rem),radial-gradient(circle at 96% 4%,rgba(121,84,241,.14),transparent 32rem),linear-gradient(180deg,#fbfdff 0%,#f7fbff 48%,#f5f7ff 100%)!important;color:var(--ink);text-rendering:geometricPrecision}
@@ -16,20 +14,20 @@ body{font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;backgroun
 ::-webkit-scrollbar-thumb{background:#1975FF;border-radius:4px}
 ::-webkit-scrollbar-thumb:hover{background:#7954F1}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}
-}.fade-in{animation:fadeIn .4s cubic-bezier(.22,1,.36,1)}
+}.fade-in{animation:none}
 .answer-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1),padding .3s ease}
 .answer-reveal.open{max-height:4000px;padding-top:12px;padding-bottom:12px}
 .nav-link.active{background-color:var(--brand-soft)!important;color:var(--brand)!important;border-color:#9DD7FC!important}
-#navbar{background:rgba(255,255,255,.84)!important;border-bottom:1px solid rgba(214,226,246,.86)!important;box-shadow:0 1px 18px rgba(25,117,255,.08)!important;backdrop-filter:blur(18px) saturate(1.08);transition:transform 240ms cubic-bezier(.22,1,.36,1),opacity 240ms ease,box-shadow 240ms ease;will-change:transform}
+#navbar{background:rgba(255,255,255,.94)!important;border-bottom:1px solid rgba(214,226,246,.86)!important;box-shadow:0 1px 10px rgba(25,117,255,.06)!important;transition:transform 240ms cubic-bezier(.22,1,.36,1),opacity 240ms ease,box-shadow 240ms ease;will-change:transform}
 #navbar.nav-hidden{transform:translateY(calc(-100% - .5rem));opacity:.96;pointer-events:none}
 .nav-link{border-color:rgba(214,226,246,.92)!important;background:rgba(255,255,255,.82)!important;transition:background-color .18s ease,border-color .18s ease,transform .18s cubic-bezier(.22,1,.36,1)}
 .nav-link:hover{background:rgba(226,239,255,.78)!important;border-color:rgba(25,117,255,.35)!important;transform:translateY(-1px)}
-.question-card{border:1px solid rgba(214,226,246,.9)!important;background:rgba(255,255,255,.86)!important;box-shadow:0 12px 30px rgba(25,117,255,.08)!important;transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease,border-color .22s ease}
-.question-card:hover{transform:translateY(-2px);border-color:rgba(25,117,255,.34)!important;box-shadow:0 18px 42px rgba(25,117,255,.13)!important}
+.question-card{border:1px solid rgba(214,226,246,.9)!important;background:rgba(255,255,255,.9)!important;box-shadow:0 3px 12px rgba(25,117,255,.06)!important;transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s ease,border-color .2s ease}
+.question-card:hover{transform:translateY(-1px);border-color:rgba(25,117,255,.34)!important;box-shadow:0 8px 20px rgba(25,117,255,.1)!important}
 input:focus{outline:none;border-color:var(--brand)!important;box-shadow:0 0 0 3px rgba(25,117,255,.16)}
 input[type="text"]{background:rgba(255,255,255,.78)!important;border-color:rgba(214,226,246,.95)!important}
-.mcq-option{transition:all .2s;cursor:pointer}
-.mcq-option:hover:not(.answered){transform:translateY(-1px);box-shadow:0 8px 18px rgba(25,117,255,.1)}
+.mcq-option{transition:background-color .18s ease,border-color .18s ease,transform .18s cubic-bezier(.22,1,.36,1),box-shadow .18s ease;cursor:pointer}
+.mcq-option:hover:not(.answered){transform:translateY(-1px);box-shadow:0 4px 10px rgba(25,117,255,.08)}
 .mcq-option.correct{background-color:#5FCFB5!important;color:white!important;border-color:#5FCFB5!important}
 .mcq-option.wrong{background-color:#C41E3A!important;color:white!important;border-color:#C41E3A!important}
 .score-bar{transition:width 1s cubic-bezier(.22,1,.36,1)}
@@ -1143,7 +1141,7 @@ h2.text-2xl{font-size:1.2rem!important}
 function toggleAnswer(id){
   const el=document.getElementById(id);
   el.classList.toggle('open');
-  saveState();
+  saveStateNow();
 }
 
 // --- MCQ check ---
@@ -1161,7 +1159,7 @@ function checkMCQ(optEl,qId,choice,correct){
   // Show explanation
   const exp=document.getElementById(qId+'_explain');
   if(exp)exp.classList.add('open');
-  saveState();
+  saveStateNow();
 }
 
 // --- Fill-in scoring helpers ---
@@ -1209,7 +1207,9 @@ const fbAnswers={
 };
 
 // --- Save state ---
-function saveState(){
+let saveStateTimer=0;
+
+function collectState(){
   const state={};
   // Save fill-in inputs
   for(let i=1;i<=40;i++){
@@ -1232,7 +1232,17 @@ function saveState(){
     const hasAnswered=card.querySelector('.mcq-option.answered');
     if(hasAnswered)state['mcq_'+qId]=hasWrong?'wrong':'correct';
   });
-  localStorage.setItem('tcm_quiz_state',JSON.stringify(state));
+  return state;
+}
+
+function saveStateNow(){
+  window.clearTimeout(saveStateTimer);
+  localStorage.setItem('tcm_quiz_state',JSON.stringify(collectState()));
+}
+
+function saveState(){
+  window.clearTimeout(saveStateTimer);
+  saveStateTimer=window.setTimeout(saveStateNow,180);
 }
 
 // --- Load state ---
@@ -1348,7 +1358,7 @@ function checkAll(){
 
   // Show all answers
   document.querySelectorAll('.answer-reveal').forEach(el=>el.classList.add('open'));
-  saveState();
+  saveStateNow();
 }
 
 // --- Nav active highlight ---
@@ -1358,9 +1368,20 @@ const navbar=document.getElementById('navbar');
 let lastNavY=Math.max(window.scrollY||0,0);
 let navTicking=false;
 
-function updateAutoHideNav(){
+function updateNavState(){
   const currentY=Math.max(window.scrollY||0,0);
   const diff=currentY-lastNavY;
+  let current='';
+
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<=120)current=id;
+  });
+  navLinks.forEach(link=>{
+    link.classList.remove('active');
+    if(link.getAttribute('href')==='#'+current)link.classList.add('active');
+  });
+
   if(navbar){
     if(currentY<=24)navbar.classList.remove('nav-hidden');
     else if(diff>8&&currentY>96)navbar.classList.add('nav-hidden');
@@ -1371,17 +1392,8 @@ function updateAutoHideNav(){
 }
 
 window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el&&el.getBoundingClientRect().top<=120)current=id;
-  });
-  navLinks.forEach(link=>{
-    link.classList.remove('active');
-    if(link.getAttribute('href')==='#'+current)link.classList.add('active');
-  });
   if(!navTicking){
-    window.requestAnimationFrame(updateAutoHideNav);
+    window.requestAnimationFrame(updateNavState);
     navTicking=true;
   }
 },{passive:true});

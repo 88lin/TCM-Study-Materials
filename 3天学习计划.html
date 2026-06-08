@@ -4,31 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>中医药学概论 · 学习计划</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        tcm: {
-          accent: '#1975FF',
-          red: '#C41E3A',
-          blue: '#2F8BFC',
-          cream: '#F5F7FF',
-          dark: '#192337',
-          green: '#5FCFB5'
-        }
-      },
-      fontFamily: {
-        'serif-cn': ['Noto Serif SC', 'serif'],
-        'sans-cn': ['Noto Sans SC', 'sans-serif']
-      }
-    }
-  }
-}
-</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="/src/styles.css">
 <style>
   body {
     font-family: 'Noto Sans SC', sans-serif;
@@ -43,20 +21,20 @@ tailwind.config = {
   body::before {
     display: none;
   }
-  .font-serif-cn { font-family: 'Noto Serif SC', serif; }
+  .font-serif-cn { font-family: 'Noto Serif SC', 'Microsoft YaHei', serif; }
   .card-hover {
     max-width: 100%;
     border-color: #d6e2f6 !important;
     transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s ease, border-color 0.24s ease;
-    box-shadow: 0 12px 30px rgba(25, 117, 255, 0.08) !important;
+    box-shadow: 0 3px 12px rgba(25, 117, 255, 0.06) !important;
   }
-  .card-hover:hover { transform: translateY(-2px); border-color: #9dd7fc !important; box-shadow: 0 18px 42px rgba(25, 117, 255, 0.13) !important; }
+  .card-hover:hover { transform: translateY(-1px); border-color: #9dd7fc !important; box-shadow: 0 8px 20px rgba(25, 117, 255, 0.1) !important; }
   .progress-bar { transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
   .timeline-dot { transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease; }
   .timeline-dot:hover { transform: scale(1.14); }
   .fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
-  .tag-float { animation: float 3s ease-in-out infinite; }
+  .tag-float { animation: none; }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
   .check-animate {
     position: relative;
@@ -65,7 +43,7 @@ tailwind.config = {
   }
   .check-animate:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(25, 117, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(25, 117, 255, 0.08);
   }
   .check-animate.is-checked,
   .plan-check-row.is-checked {
@@ -98,7 +76,7 @@ tailwind.config = {
     color: #1975FF;
     font-size: 0.75rem;
     font-weight: 700;
-    box-shadow: 0 6px 16px rgba(25, 117, 255, 0.1);
+    box-shadow: 0 3px 8px rgba(25, 117, 255, 0.08);
   }
   .plan-block-check.is-checked {
     border-color: #9DD7FC;
@@ -111,10 +89,9 @@ tailwind.config = {
   .kp-table td, .kp-table th { padding: 6px 10px; border: 1px solid #d6e2f6; }
   #mainNav {
     border-bottom: 1px solid rgba(214, 226, 246, 0.86) !important;
-    background: rgba(255, 255, 255, 0.84) !important;
-    box-shadow: 0 1px 18px rgba(25, 117, 255, 0.08) !important;
-    backdrop-filter: blur(18px) saturate(1.08);
-    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), background-color 240ms ease, box-shadow 240ms ease, backdrop-filter 240ms ease;
+    background: rgba(255, 255, 255, 0.94) !important;
+    box-shadow: 0 1px 10px rgba(25, 117, 255, 0.06) !important;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), background-color 240ms ease, box-shadow 240ms ease;
     will-change: transform;
   }
   #mainNav.nav-hidden {
@@ -236,7 +213,7 @@ tailwind.config = {
       border: 1px solid #d6e2f6;
       border-radius: 0.75rem;
       background: #fff;
-      box-shadow: 0 8px 18px rgba(47, 143, 124, 0.07);
+      box-shadow: 0 2px 8px rgba(25, 117, 255, 0.06);
     }
     .kp-table td,
     #summary table td { border: 0 !important; border-bottom: 1px solid #edf7f3 !important; padding: 0.55rem 0.75rem !important; text-align: left !important; }
@@ -273,7 +250,7 @@ tailwind.config = {
 <body class="relative">
 
 <!-- NAV -->
-<nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 no-print bg-white/90 backdrop-blur-md shadow-sm border-b border-teal-100 transition-all duration-300">
+<nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 no-print bg-white/90 shadow-sm border-b border-teal-100 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-full bg-tcm-accent/30 flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5 text-tcm-dark"></i></div>
@@ -934,8 +911,15 @@ tailwind.config = {
     });
   }
 
+  function renderLucideIcons() {
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  }
   if (window.lucide) {
-    lucide.createIcons();
+    renderLucideIcons();
+  } else {
+    window.addEventListener('DOMContentLoaded', renderLucideIcons, { once: true });
   }
   const nav = document.getElementById('mainNav');
   function setupAutoHideNav(navEl) {
@@ -973,7 +957,12 @@ tailwind.config = {
   }
   setupAutoHideNav(nav);
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   const progressObserver = new IntersectionObserver((entries) => {
@@ -985,6 +974,7 @@ tailwind.config = {
           bar.style.width = '0%';
           setTimeout(() => { bar.style.width = width; }, 200);
         });
+        progressObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
