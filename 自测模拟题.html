@@ -6,30 +6,30 @@
 <title>中医学自测模拟题</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{tcm:{accent:'#FF9F84',red:'#C41E3A',blue: '#4FBFA8',cream: '#FFF9F2',dark: '#2F8F7C',green:'#5FCFB5'}}}}}
+tailwind.config={theme:{extend:{colors:{tcm:{accent:'#1975FF',red:'#C41E3A',blue: '#2F8BFC',cream: '#F5F7FF',dark: '#192337',green:'#5FCFB5'}}}}}
 </script>
 <style>
-:root{--ink:#172a26;--muted:#536560;--line:#d8f2e9;--mint:#3ac4a7;--mint-soft:#e1faf2;--peach:#ff9f84;--peach-soft:#fff1eb}
-body{font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(circle at 8% -4%,rgba(126,203,246,.16),transparent 30rem),radial-gradient(circle at 96% 4%,rgba(255,159,132,.16),transparent 32rem),linear-gradient(180deg,#fbfffd 0%,#f4fffb 48%,#fff8f4 100%)!important;color:var(--ink);text-rendering:geometricPrecision}
+:root{--ink:#192337;--muted:#4A5C76;--line:#d6e2f6;--brand:#1975FF;--brand-soft:#e2efff;--violet:#7954F1;--violet-soft:#f1edff;--warm:#F3B3A9;--warm-soft:#fff4f1}
+body{font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(circle at 8% -4%,rgba(121,185,252,.18),transparent 30rem),radial-gradient(circle at 96% 4%,rgba(121,84,241,.14),transparent 32rem),linear-gradient(180deg,#fbfdff 0%,#f7fbff 48%,#f5f7ff 100%)!important;color:var(--ink);text-rendering:geometricPrecision}
 ::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:#FFF9F2}
-::-webkit-scrollbar-thumb{background:#FF9F84;border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:#4FBFA8}
+::-webkit-scrollbar-track{background:#F5F7FF}
+::-webkit-scrollbar-thumb{background:#1975FF;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#7954F1}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}
 }.fade-in{animation:fadeIn .4s cubic-bezier(.22,1,.36,1)}
 .answer-reveal{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1),padding .3s ease}
 .answer-reveal.open{max-height:4000px;padding-top:12px;padding-bottom:12px}
-.nav-link.active{background-color:var(--peach-soft)!important;color:#258771!important;border-color:#FFD6C7!important}
-#navbar{background:rgba(255,255,255,.84)!important;border-bottom:1px solid rgba(216,242,233,.86)!important;box-shadow:0 1px 18px rgba(45,137,116,.08)!important;backdrop-filter:blur(18px) saturate(1.08);transition:transform 240ms cubic-bezier(.22,1,.36,1),opacity 240ms ease,box-shadow 240ms ease;will-change:transform}
+.nav-link.active{background-color:var(--brand-soft)!important;color:var(--brand)!important;border-color:#9DD7FC!important}
+#navbar{background:rgba(255,255,255,.84)!important;border-bottom:1px solid rgba(214,226,246,.86)!important;box-shadow:0 1px 18px rgba(25,117,255,.08)!important;backdrop-filter:blur(18px) saturate(1.08);transition:transform 240ms cubic-bezier(.22,1,.36,1),opacity 240ms ease,box-shadow 240ms ease;will-change:transform}
 #navbar.nav-hidden{transform:translateY(calc(-100% - .5rem));opacity:.96;pointer-events:none}
-.nav-link{border-color:rgba(216,242,233,.92)!important;background:rgba(255,255,255,.82)!important;transition:background-color .18s ease,border-color .18s ease,transform .18s cubic-bezier(.22,1,.36,1)}
-.nav-link:hover{background:rgba(225,250,242,.78)!important;border-color:rgba(58,196,167,.45)!important;transform:translateY(-1px)}
-.question-card{border:1px solid rgba(216,242,233,.9)!important;background:rgba(255,255,255,.86)!important;box-shadow:0 12px 30px rgba(45,137,116,.08)!important;transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease,border-color .22s ease}
-.question-card:hover{transform:translateY(-2px);border-color:rgba(58,196,167,.44)!important;box-shadow:0 18px 42px rgba(45,137,116,.13)!important}
-input:focus{outline:none;border-color:#3ac4a7!important;box-shadow:0 0 0 3px rgba(95,207,181,.2)}
-input[type="text"]{background:rgba(255,255,255,.78)!important;border-color:rgba(216,242,233,.95)!important}
+.nav-link{border-color:rgba(214,226,246,.92)!important;background:rgba(255,255,255,.82)!important;transition:background-color .18s ease,border-color .18s ease,transform .18s cubic-bezier(.22,1,.36,1)}
+.nav-link:hover{background:rgba(226,239,255,.78)!important;border-color:rgba(25,117,255,.35)!important;transform:translateY(-1px)}
+.question-card{border:1px solid rgba(214,226,246,.9)!important;background:rgba(255,255,255,.86)!important;box-shadow:0 12px 30px rgba(25,117,255,.08)!important;transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease,border-color .22s ease}
+.question-card:hover{transform:translateY(-2px);border-color:rgba(25,117,255,.34)!important;box-shadow:0 18px 42px rgba(25,117,255,.13)!important}
+input:focus{outline:none;border-color:var(--brand)!important;box-shadow:0 0 0 3px rgba(25,117,255,.16)}
+input[type="text"]{background:rgba(255,255,255,.78)!important;border-color:rgba(214,226,246,.95)!important}
 .mcq-option{transition:all .2s;cursor:pointer}
-.mcq-option:hover:not(.answered){transform:translateY(-1px);box-shadow:0 8px 18px rgba(45,137,116,.1)}
+.mcq-option:hover:not(.answered){transform:translateY(-1px);box-shadow:0 8px 18px rgba(25,117,255,.1)}
 .mcq-option.correct{background-color:#5FCFB5!important;color:white!important;border-color:#5FCFB5!important}
 .mcq-option.wrong{background-color:#C41E3A!important;color:white!important;border-color:#C41E3A!important}
 .score-bar{transition:width 1s cubic-bezier(.22,1,.36,1)}
@@ -84,11 +84,11 @@ h2.text-2xl{font-size:1.2rem!important}
 <button onclick="resetAll()" class="text-tcm-dark/70 hover:text-tcm-accent text-sm px-3 py-1 border border-tcm-accent/50 rounded hover:bg-tcm-accent/20 transition">重置答题</button>
 </div>
 <div class="flex flex-wrap gap-2 pb-3">
-<a href="#fill-blank" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">一、填空题</a>
-<a href="#mcq" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">二、选择题</a>
-<a href="#term-def" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">三、名词解释</a>
-<a href="#short-answer" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">四、简答题</a>
-<a href="#essay" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#fff0e8] hover:text-tcm-dark transition font-medium">五、论述题</a>
+<a href="#fill-blank" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#f1edff] hover:text-tcm-dark transition font-medium">一、填空题</a>
+<a href="#mcq" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#f1edff] hover:text-tcm-dark transition font-medium">二、选择题</a>
+<a href="#term-def" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#f1edff] hover:text-tcm-dark transition font-medium">三、名词解释</a>
+<a href="#short-answer" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#f1edff] hover:text-tcm-dark transition font-medium">四、简答题</a>
+<a href="#essay" class="nav-link text-sm px-4 py-2 rounded-lg bg-white text-tcm-dark border border-teal-100 hover:bg-[#f1edff] hover:text-tcm-dark transition font-medium">五、论述题</a>
 </div>
 </div>
 </nav>
