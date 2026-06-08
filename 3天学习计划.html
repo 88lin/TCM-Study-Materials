@@ -91,6 +91,14 @@
   .decorative-line { background: linear-gradient(90deg, transparent, #1975FF, transparent); height: 1px; }
   .kp-table th { font-family: 'Noto Serif SC', serif; }
   .kp-table td, .kp-table th { padding: 6px 10px; border: 1px solid #d6e2f6; }
+  .mobile-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+  }
   #mainNav {
     border-bottom: 1px solid rgba(214, 226, 246, 0.86) !important;
     background: rgba(255, 255, 255, 0.94) !important;
@@ -183,9 +191,7 @@
     .font-serif-cn.text-2xl { font-size: 1.28rem !important; line-height: 1.35; }
     .font-serif-cn.text-lg { font-size: 1rem !important; line-height: 1.35; }
     .card-hover p,
-    .check-animate span,
-    .kp-table td,
-    #summary table td { overflow-wrap: anywhere; }
+    .check-animate span { overflow-wrap: anywhere; }
     .tag-float { animation: none; white-space: normal; }
     .fade-in { opacity: 1; transform: none; }
     .card-hover .flex.items-center.gap-2,
@@ -195,33 +201,35 @@
     .check-animate .ml-auto { margin-left: 1.9rem !important; }
     .grid.grid-cols-3,
     .grid.grid-cols-4 { grid-template-columns: 1fr !important; }
-    .kp-table,
-    #summary table { display: block; border: 0; }
-    .kp-table thead,
-    #summary table thead { display: none; }
-    .kp-table tbody,
-    .kp-table tr,
-    .kp-table td,
-    #summary table tbody,
-    #summary table tfoot,
-    #summary table tr,
-    #summary table td { display: block; width: 100% !important; }
-    .kp-table tr,
-    #summary table tbody tr,
-    #summary table tfoot tr {
-      margin-bottom: 0.85rem;
-      overflow: hidden;
-      border: 1px solid #d6e2f6;
-      border-radius: 0.75rem;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(25, 117, 255, 0.06);
+    .mobile-table-scroll { margin-bottom: 0.25rem; padding-bottom: 0.15rem; }
+    .mobile-table-scroll .kp-table,
+    #summary .mobile-table-scroll table {
+      width: 100%;
+      min-width: 58rem;
+      max-width: none;
+      table-layout: auto;
+      border-radius: 0 !important;
+      overflow: visible !important;
     }
-    .kp-table td,
-    #summary table td { border: 0 !important; border-bottom: 1px solid #edf7f3 !important; padding: 0.55rem 0.75rem !important; text-align: left !important; }
-    .kp-table td:last-child,
-    #summary table td:last-child { border-bottom: 0 !important; }
-    .plan-check-cell { display: flex !important; align-items: center; justify-content: flex-start; width: 100% !important; background: #f0fdfa; }
-    .plan-check-cell::after { content: "完成"; margin-left: 0.45rem; color: #1975FF; font-size: 0.78rem; font-weight: 700; }
+    #summary .mobile-table-scroll table { min-width: 56rem; }
+    .mobile-table-scroll th,
+    .mobile-table-scroll td {
+      white-space: normal;
+      overflow-wrap: break-word;
+      word-break: normal;
+      vertical-align: top;
+    }
+    .mobile-table-scroll th { padding: 0.58rem 0.7rem !important; }
+    .mobile-table-scroll td { padding: 0.55rem 0.7rem !important; }
+    .plan-check-cell {
+      display: table-cell !important;
+      width: 3.5rem !important;
+      min-width: 3.5rem;
+      text-align: center !important;
+      vertical-align: middle !important;
+      background: transparent;
+    }
+    .plan-check-cell::after { content: none; }
     .plan-block-check { width: calc(100% - 2rem); justify-content: center; margin: 0.75rem 1rem 1rem; }
   }
   @media (max-width: 380px) {
@@ -233,8 +241,8 @@
     header .decorative-line { width: 8rem !important; }
     .card-hover > div,
     .day-section > div:first-child { padding: 0.85rem !important; }
-    .kp-table td,
-    #summary table td { padding: 0.5rem 0.65rem !important; }
+    .mobile-table-scroll th,
+    .mobile-table-scroll td { padding: 0.5rem 0.65rem !important; }
   }
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -953,6 +961,16 @@
     });
   }
 
+  function setupResponsiveTables() {
+    document.querySelectorAll('.kp-table, #summary table').forEach(table => {
+      if (table.closest('.mobile-table-scroll') || !table.parentNode) return;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'mobile-table-scroll';
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+  }
+
   function renderLucideIcons() {
     if (window.lucide) {
       lucide.createIcons();
@@ -1031,6 +1049,7 @@
   }, { threshold: 0.2 });
   document.querySelectorAll('.day-section').forEach(el => progressObserver.observe(el));
   addPlanRowChecks();
+  setupResponsiveTables();
   document.querySelectorAll('.check-animate input[type="checkbox"]').forEach((cb, i) => {
     wireCheckbox(cb, 'tcm_check_' + i, cb.closest('.check-animate'));
   });

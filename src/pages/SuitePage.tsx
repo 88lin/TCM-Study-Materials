@@ -1,6 +1,5 @@
 import { type SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { CalendarDays, ClipboardList, Layers3, NotebookTabs } from 'lucide-react';
-import { useAutoHideOnScroll } from '../hooks/useAutoHideOnScroll';
 import { BackToTop } from '../components/BackToTop';
 
 const assetVersion = '20260608-ui-polish';
@@ -34,14 +33,13 @@ const modules = [
 
 export function SuitePage() {
   const [activeId, setActiveId] = useState(modules[0].id);
-  const navHidden = useAutoHideOnScroll(48);
   const [frameNavHidden, setFrameNavHidden] = useState(false);
   const [frameScrollWindow, setFrameScrollWindow] = useState<Window | null>(null);
   const [frameScrollVersion, setFrameScrollVersion] = useState(0);
   const frameCleanup = useRef<null | (() => void)>(null);
   const activeModule = useMemo(() => modules.find((module) => module.id === activeId) ?? modules[0], [activeId]);
   const activeHref = `${activeModule.href}?v=${assetVersion}`;
-  const navIsHidden = navHidden || frameNavHidden;
+  const navIsHidden = frameNavHidden;
 
   useEffect(() => {
     return () => frameCleanup.current?.();
@@ -58,28 +56,13 @@ export function SuitePage() {
     setFrameScrollWindow(frameWindow);
     setFrameScrollVersion((version) => version + 1);
 
-    let lastY = Math.max(frameWindow.scrollY || 0, 0);
     let ticking = false;
-    const delta = 8;
-    const showAtTop = 24;
-    const hideAfter = 48;
-    let lastTouchY: number | null = null;
+    const showAtTop = 8;
     let animationFrameId = 0;
-    let lastInputDirection: 'up' | 'down' | null = null;
 
     function update() {
       const currentY = Math.max(frameWindow?.scrollY || 0, 0);
-      const diff = currentY - lastY;
-
-      if (currentY <= showAtTop) {
-        setFrameNavHidden(false);
-      } else if (diff > delta && currentY > hideAfter) {
-        setFrameNavHidden(true);
-      } else if (diff < -delta && lastInputDirection === 'up') {
-        setFrameNavHidden(false);
-      }
-
-      lastY = currentY;
+      setFrameNavHidden(currentY > showAtTop);
       ticking = false;
       animationFrameId = 0;
     }
@@ -91,56 +74,10 @@ export function SuitePage() {
       }
     }
 
-    function onWheel(event: WheelEvent) {
-      if (event.deltaY > 12 && Math.max(frameWindow?.scrollY || 0, 0) > hideAfter) {
-        lastInputDirection = 'down';
-        setFrameNavHidden(true);
-      } else if (event.deltaY < -12) {
-        lastInputDirection = 'up';
-        setFrameNavHidden(false);
-      }
-    }
-
-    function onKeyDown(event: KeyboardEvent) {
-      if (['ArrowDown', 'End', 'PageDown', 'Space'].includes(event.code)) {
-        lastInputDirection = 'down';
-      } else if (['ArrowUp', 'Home', 'PageUp'].includes(event.code)) {
-        lastInputDirection = 'up';
-        setFrameNavHidden(false);
-      }
-    }
-
-    function onTouchStart(event: TouchEvent) {
-      lastTouchY = event.touches[0]?.clientY ?? null;
-    }
-
-    function onTouchMove(event: TouchEvent) {
-      const currentTouchY = event.touches[0]?.clientY;
-      if (typeof currentTouchY !== 'number' || lastTouchY === null) return;
-
-      const touchDiff = currentTouchY - lastTouchY;
-      if (touchDiff < -10 && Math.max(frameWindow?.scrollY || 0, 0) > hideAfter) {
-        lastInputDirection = 'down';
-        setFrameNavHidden(true);
-      } else if (touchDiff > 10) {
-        lastInputDirection = 'up';
-        setFrameNavHidden(false);
-      }
-
-      lastTouchY = currentTouchY;
-    }
-
     frameWindow.addEventListener('scroll', onScroll, { passive: true });
-    frameWindow.addEventListener('wheel', onWheel, { passive: true });
-    frameWindow.addEventListener('keydown', onKeyDown);
-    frameWindow.addEventListener('touchstart', onTouchStart, { passive: true });
-    frameWindow.addEventListener('touchmove', onTouchMove, { passive: true });
+    update();
     frameCleanup.current = () => {
       frameWindow.removeEventListener('scroll', onScroll);
-      frameWindow.removeEventListener('wheel', onWheel);
-      frameWindow.removeEventListener('keydown', onKeyDown);
-      frameWindow.removeEventListener('touchstart', onTouchStart);
-      frameWindow.removeEventListener('touchmove', onTouchMove);
       if (animationFrameId) frameWindow.cancelAnimationFrame(animationFrameId);
       ticking = false;
       animationFrameId = 0;
